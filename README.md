@@ -1,6 +1,10 @@
 # InOrOut
 
-TODO: Write a gem description
+The aim of this gem is to help automate the process of finding out whether your favorite AFL players are playing on this week.
+
+This is hopefully useful for anyone involved in fantasy football, or if you simply want to know where they will be on a Saturday arvo.
+
+The data for this app is based on the AFL's team lineups
 
 ## Installation
 
@@ -18,7 +22,45 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Hopefully you find the gem easy to use:
+
+Simple usage:
+
+    require 'in_or_out'
+
+    # They are considered in if they are listed on the field or on the interchange
+
+    InOrOut.new('Jobe Watson', 'Essendon').status
+    => 'In'
+
+    InOrOut.new('Jobe Watson', 'Essendon').position
+    => 'Centre'
+
+    # They are considered out if they are not found on the list
+
+    InOrOut.new('Tim Watson', 'Essendon').status
+    => 'Out'
+
+    # They are 'possible' they are are an Emergency part of an unfinilised Interchange
+
+    InOrOut.new('Joe Daniher', 'Essendon').status
+    => 'Possible'
+
+    InOrOut.new('Joe Daniher', 'Essendon').position
+    => 'Interchange/Emergency'
+
+    # They are 'unknown' if the teams are not released
+
+    InOrOut.new('Joe Daniher', 'Essendon').status
+    => 'Unknown'
+
+Advanced usage:
+
+    # Get all your teams players in one go
+
+    InOrOut.new('Essendon')
+    => []
+
 
 ## Contributing
 
