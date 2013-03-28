@@ -30,35 +30,35 @@ Simple usage:
 
     # They are considered in if they are listed on the field or on the interchange
 
-    InOrOut.new('Jobe Watson', 'Essendon').status
+    InOrOut::Player.new('Jobe Watson', 'Essendon').status
     => 'In'
 
-    InOrOut.new('Jobe Watson', 'Essendon').position
+    InOrOut::Player.new('Jobe Watson', 'Essendon').position
     => 'Centre'
 
     # They are considered out if they are not found on the list
 
-    InOrOut.new('Tim Watson', 'Essendon').status
+    InOrOut::Player.new('Tim Watson', 'Essendon').status
     => 'Out'
 
     # They are 'possible' they are are an Emergency part of an unfinilised Interchange
 
-    InOrOut.new('Joe Daniher', 'Essendon').status
+    InOrOut::Player.new('Joe Daniher', 'Essendon').status
     => 'Possible'
 
-    InOrOut.new('Joe Daniher', 'Essendon').position
+    InOrOut::Player.new('Joe Daniher', 'Essendon').position
     => 'Interchange/Emergency'
 
     # They are 'unknown' if the teams are not released
 
-    InOrOut.new('Joe Daniher', 'Essendon').status
+    InOrOut::Player.new('Joe Daniher', 'Essendon').status
     => 'Unknown'
 
 Advanced usage:
 
     # Get all your teams players in one go
 
-    InOrOut.new('Essendon')
+    InOrOut::Team.new('Essendon')
     => []
 
 
