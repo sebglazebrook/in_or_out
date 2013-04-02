@@ -1,0 +1,3405 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <link href="/vgn-ext-templating/common/styles/vgn-ext-templating-delivery.css" rel="stylesheet" type="text/css"></link>
+    <script type="text/javascript" src="/vgn-ext-templating/scripts/async/ajax.jsp"></script>
+    <!-- RequireJS - AMD of choice -->
+
+    <!--[if IE 7]><link rel="stylesheet" href="/static-resources/themes/common/hack_ie7.css" /><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/static-resources/themes/common/hack_ie8.css" /><![endif]-->
+    <!--[if IE 9]><link rel="stylesheet" href="/static-resources/themes/common/hack_ie9.css" /><![endif]-->
+
+    <script type="text/javascript" src="/static-resources/js/libs/require.js" data-main="/static-resources/js/config"></script>
+
+    <!--  JS Includes for match centre grid  -->
+    <!-- Updated based on QC 1341 request and mail from Adrian, Start  - rinukoll -->
+
+    <script src="/bphf/res/js/modernizr-2.5.3.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var bxbHeadExt = {
+            bxbScriptSrc: '/bphf/res/js/bxb.src.1.4.js',
+            addLoadEvent: function(func) {'use strict'; var oldonload = window.onload;
+                if (typeof window.onload !== 'function') {window.onload = func;}
+                else {window.onload = function() {if (oldonload) {oldonload();} func();};}
+            },
+            bxbExists: function() {'use strict'; var a,b;
+                if(typeof bxb === 'undefined'){a = document.getElementsByTagName('body')[0];
+                    b = document.createElement('script');b.setAttribute('type','text/javascript');
+                    b.setAttribute('src',bxbHeadExt.bxbScriptSrc);a.appendChild(b);
+                }
+            },
+            init:function() {'use strict'; this.addLoadEvent(this.bxbExists);}
+        };
+        try {bxbHeadExt.init();} catch(err){}
+    </script>
+    <link rel="stylesheet" href="/bphf/res/css/bphf-2012.1.6.css" type="text/css" />
+
+    <!--Updated based on QC 1341 request and mail from Adrian, End  -->
+
+    <script type="text/javascript" src="/static-resources/js/libs/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/static-resources/js/libs/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="/static-resources/js/libs/jquery.slides.js"></script>
+    <script type="text/javascript" src="/static-resources/js/libs/jquery.uniform.min.js"></script>
+    <link href="/static-resources/themes/common/libs/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="/static-resources/themes/common/libs/jscrollpane.css" />
+    <script type="text/javascript" src="/static-resources/js/libs/jquery.jscrollpane.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/libs/jquery.colorbox-min.js"></script>
+    <script type="text/javascript" src="/static-resources/js/libs/jquery.jcarousel.min.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/sharingtools.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/libs/underscore.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/slideshow-module.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/libs/backbone.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/libs/raphael-min.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/libs/moment.min.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/afl.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/common-behaviours.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/common-afl.js"></script>
+
+    <meta name="tp:baseUrl" content="/static-resources/player/pdk-res/pdk" />
+    <link href="/static-resources/player/player-res/css/TelstraBaseline-l-dark.css" rel="stylesheet" type="text/css" media="screen" />
+    <script language="javascript" type="text/javascript" src="/static-resources/player/pdk-res/pdk/tpPdk.js"></script>
+    <script language="javascript" type="text/javascript" src="/static-resources/player/player-res/js/JSONRequest.js"></script>
+    <script language="javascript" type="text/javascript" src="/static-resources/player/player-res/js/Utility.js"></script>
+    <script language="javascript" type="text/javascript" src="/static-resources/player/player-res/js/Player.js"></script>
+    <script language="javascript" type="text/javascript" src="/static-resources/player/player-res/js/DivInjector.js"></script>
+    <script language="javascript" src="http://cdn-static.liverail.com/js/companions.js"></script>
+    <script language="javascript"> lrCompanionPurge["300x250"] = true; </script>
+    <script type="text/javascript" src="/static-resources/js/video-player.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/backbone-extras.js"></script>
+    <script type="text/javascript" src="/static-resources/js/services.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/game-bar.js"></script>
+
+    <script type="text/javascript" src="/static-resources/js/libs/g.raphael.js"></script>
+    <script type="text/javascript" src="/static-resources/js/libs/g.line-min.js"></script><!--  CSS Includes for match centre  -->
+    <link rel="stylesheet" href="/static-resources/themes/match-centre/mcbase.css" />
+
+    <!--  JS Includes for match centre  -->
+    <script type="text/javascript" src="/static-resources/js/mc/mc.js"></script>
+    <script type="text/javascript" src="/static-resources/js/mc/live/scores.js"></script>
+    <script type="text/javascript" src="/static-resources/js/mc/live/events.js"></script>
+    <script type="text/javascript" src="/static-resources/js/mc/score-worm.js"></script>
+    <script type="text/javascript" src="/static-resources/js/mc/live/stats.js"></script>
+    <script type="text/javascript" src="/static-resources/js/mc/live/commentary.js"></script>
+    <script type="text/javascript" src="/static-resources/js/mc/live/team-stats.js"></script>
+
+    <!-- AFL Theme BEGINS (1) --> <link href="/static-resources/themes/common/libs/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+    <!-- AFL Theme ENDS -->
+
+    <script type="text/javascript" src="//medrx.sensis.com.au/images/sensis/AFL/util.js"></script>
+    <script type="text/javascript">
+        MediaSmart.Utilities.initialise({
+            area: "MATCHES"
+        });
+    </script>
+    <script>
+        $(window).load(function() {
+            MediaSmart.insertAllAds();
+        });
+    </script>
+    <!-- link rel="shortcut icon" href="/static-resources/favicon/afl.ico"/-->
+    <link rel="shortcut icon" href="/static-resources/favicon/afl.ico"/>
+    <title>Gold Coast Suns Vs St Kilda - Match Centre - AFL.com.au</title>
+    <link rel="canonical" href="/match-centre/2013/1/gcfc-v-stk" />
+
+    <!-- AFL Metadata START -->
+    <!-- Logic used for Device Detection starts here -->
+    <!-- isDeviceGroupFound=false,:::isRenderGroupFound=false,-->
+    <!-- Logic used for Device Detection ends here -->
+
+    <!-- START Omniture / Google / Neilson Analytics Meta tags -->
+    <meta name="omni-match-name" content="Gold Coast Suns Vs St Kilda">
+    <meta name="omni-match-sds-id" content="CD_M20130140106">
+    <meta name="omni-match-round-id" content="CD_R201301401">
+    <meta name="omni-match-season-id" content="CD_S2013014">
+    <meta name="omni-match-home-team" content="GCFC">
+    <meta name="omni-match-away-team" content="STK">
+    <!-- END Omniture / Google / Neilson Analytics Meta tags -->
+
+
+    <script type="text/javascript">
+        var serverTimeStamp = "1364599040035";
+    </script>
+
+    <script type="text/javascript">
+
+        var rec_site = "AFL";
+    </script>
+
+    <meta property="og:title" content="Gold Coast Suns Vs St Kilda - Match Centre - AFL.com.au"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://www.afl.com.au/media/matches"/>
+    <meta property="og:image" content="http://www.afl.com.au/staticfile/Content/AFL Tenant/AFL/90x85-afl.jpeg"/>
+    <meta property="og:site_name" content="afl.com.au"/>
+    <meta property="fb:app_id" content="122182791128343"/>
+    <meta property="og:description" content="Auto created"/>
+
+    <meta name="afl-club-abbr" content="AFL">
+    <meta name="afl-url-image" content="http://www.afl.com.au/staticfile/Content/AFL Tenant/AFL/90x85-afl.jpeg">
+    <meta name="afl-url-content-type" content="other">
+    <meta name="afl-publish-date" content="2013-03-30">
+    <meta name="afl-publish-date-full" content="2013-03-30 09:50:47 EST">
+    <meta name="description" content="Auto created"/>
+    <link rel="canonical" href="/match-centre/2013/1/gcfc-v-stk" />
+
+    <!-- AFL Metadata ENDS -->
+    <script type="text/javascript">
+        AFL.Properties.global = {
+            domain: {
+                online: "http://www.afl.com.au",
+                mobile: "http://m.afl.com.au"
+            }
+        };
+    </script>
+    <script type="text/javascript" language="JavaScript" src="/staticfile/AFL Tenant/Shared/System/Js/form_state_manager.js"></script>
+    <script type="text/javascript" src="//www.google-analytics.com/ga.js"></script>
+</head>
+
+<body>
+
+<div class="header-region"><!--googleoff: index-->
+
+<div id="bphf-top"><header id="bxb-header">
+    <div id="bxb-skip"><a id="bxb-skip-lnk" class="bxb-skip-lnk-off" href="#bxb-content">Skip to main content</a></div>
+
+    <section id="bxb-section-global" role="region">
+        <div class="bxb-wrap"><a id="bxb-logo" href="http://go.bigpond.com/home/index.jsp?ref=Net-Header-BPlogo">BigPond</a><nav id="bxb-nav-global" role="navigation">
+
+            <ul id="bxb-menu-global" class="bxb-menu-l1" role="menu">
+                <li class="bxb-item-l1 bxb-first" role="menuitem" aria-haspopup="true">
+                    <h4 class="bxb-item-label"><a class="bxb-trigger">Directories</a></h4>
+
+                    <ul class="bxb-menu-l2" role="menu">
+                        <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="http://www.yellowpages.com.au/?ref=Net-Header-Dir-Yellow">Yellow Pages</a></li>
+
+                        <li class="bxb-item-l2" role="menuitem"><a href="http://www.whitepages.com.au/?ref=Net-Header-Dir-White">White Pages</a></li>
+
+                        <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://www.whereis.com/?ref=Net-Header-Dir-Whereis-Site">Whereis</a></li>
+                    </ul>
+                </li>
+
+                <li class="bxb-item-l1" role="menuitem" aria-haspopup="true">
+                    <h4 class="bxb-item-label"><a class="bxb-trigger" href="http://www.telstra.com.au/?ref=Net-Header-Telstra-Home">Telstra</a></h4>
+                </li>
+
+                <li class="bxb-item-l1" role="menuitem" aria-haspopup="true">
+                    <h4 class="bxb-item-label"><a class="bxb-trigger" href="http://go.bigpond.com/help/?ref=Net-Header-Help-Overview">Help</a></h4>
+                </li>
+
+                <li class="bxb-item-l1 bxb-last" role="menuitem" aria-haspopup="true">
+                    <h4 class="bxb-item-label"><a class="bxb-trigger" href="https://signon.bigpond.com/login?goto=https://my.bigpond.com/mybigpond/default.do?ref=Net-Header-MyBigPond1">My BigPond</a></h4>
+                </li>
+            </ul>
+
+        </nav><section id="bxb-search" role="region">
+            <form id="bxb-searchForm" name="bxb-searchForm" method="get" action="javascript:return bxb.submitSearch()" onsubmit="return bxb.submitSearch()">
+                <fieldset id="bxb-search-fieldset"><section id="bxb-nav-search"><!--[if lte IE 6.5]><iframe id="bxb-fx2" src="/bphf/header/fx.html" scroll="no"></iframe><![endif]-->
+                    <ul id="bxb-menu-search" class="bxb-menu-l1" role="menu">
+                        <li class="bxb-item-l1 bxb-first bxb-last" role="menuitem" aria-haspopup="true">
+                            <h4 class="bxb-item-label"><a class="bxb-trigger" href="javascript:void(0);">&#160;</a></h4>
+
+                            <ul id="bxb-select-search" class="bxb-menu-l2" role="menu">
+                                <li class="bxb-item-l2 bxb-first bxb-s-search_sensis" role="menuitem"><a onclick="bxb.setSearch(1);">Web search by Google</a></li>
+
+                                <li class="bxb-item-l2 bxb-s-search_bigpond" role="menuitem"><a onclick="bxb.setSearch(2);">Search BigPond</a></li>
+
+                                <li class="bxb-item-l2 bxb-last bxb-s-search_telstra" role="menuitem"><a onclick="bxb.setSearch(3);">Search Telstra</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </section><input id="bxb-findQuery" type="text" name="find" onfocus="if (this.value == 'Search Telstra' || this.value == 'Search BigPond' || this.value == 'Web search by Google') {this.value='';}" value="Web search by Google" /><script type="text/javascript"><!--
+                document.write('<a href="javascript:bxb.submitSearch()" onclick="bxb.searchOmniture(this)"><span class="bxb-search-img"></span></a>');//--></script><noscript><div class="bxb-div"><input type="image" name="submit" title="Go" value="Go" id="bxb-submit-button"></div></noscript></fieldset>
+            </form>
+
+            <div id="bxb-none">
+                <form id="bigpondSearchForm" class="bxb-form" name="bigpondSearchForm" action="http://search.bigpond.com/search" method="get">
+                    <fieldset><input id="bigpondSearchFormField" name="q" type="hidden" /><input name="site" type="hidden" value="Bigpond_All" original_value="Bigpond_All" /><input name="output" type="hidden" value="xml_no_dtd" original_value="xml_no_dtd" /><input name="client" type="hidden" value="Bigpond" original_value="Bigpond" /><input name="proxystylesheet" type="hidden" value="Bigpond" original_value="Bigpond" /><input name="getfields" type="hidden" value="description" original_value="description" /><input name="filter" type="hidden" value="p" original_value="p" /><input name="proxyreload" type="hidden" value="1" original_value="1" /></fieldset>
+                </form>
+
+                <form id="webSearchForm" class="bxb-form" name="webSearchForm" action="http://www.sensis.com.au/search.do" method="get">
+                    <fieldset><input name="location" type="hidden" value="" /><input name="searchIndex" type="hidden" value="australia" /><input name="partnerid" type="hidden" value="bigpond" /><input id="webSearchFormField" name="find" type="hidden" value="" /></fieldset>
+                </form>
+
+                <form id="telstraSearchForm" class="bxb-form" name="telstraSearchForm" action="//www.telstra.com.au/search/simple-search/index.htm" method="get">
+                    <fieldset><input name="requestSiteId" type="hidden" value="personal" /><input name="searchFormSubmited" type="hidden" value="Yes" /><input id="telstraSearchFormField" name="inpSearch" type="hidden" value="" /></fieldset>
+                </form>
+            </div>
+
+        </section></div>
+
+    </section><section id="bxb-separator-blue"></section><section id="bxb-section-domain" role="region"><nav id="bxb-nav-domain" class="bxb-wrap" role="navigation">
+    <ul id="bxb-menu-domain" class="bxb-menu-l1" role="menu">
+        <li id="bxb-mega-1" class="bxb-item-l1 bxb-first" role="menuitem" aria-haspopup="true">
+            <h4 class="bxb-item-label"><a class="bxb-trigger" href="javascript:void(0);">Products &#38; Services<em class="bxb-item-caption">Internet &#38; TV</em></a></h4>
+
+            <section class="bxb-mega">
+                <ul class="bxb-menu-l2 bxb-first" role="menu" aria-hidden="true">
+                    <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="http://go.bigpond.com/broadband/?ref=Net-Header-ProductServices-Internet">Internet</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://go.bigpond.com/bundles/?ref=Net-Header-ProductServices-Bundles">Bundles</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://go.bigpond.com/tv/bptv/how_do_i_get_it/tbox/?ref=Net-Header-ProductServices-Tbox">T-Box</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://www.telstra.com.au/home-phone/thub/?ref=Net-Header-ProductServices-Thub">T-Hub</a></li>
+
+                    <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://www.telstra.com.au/mobile-phones/mobile-phones/?ref=Net-Header-ProductServices-Mobiles">Mobile phones</a></li>
+                </ul>
+
+                <ul class="bxb-menu-l2 bxb-last" role="menu" aria-hidden="true">
+                    <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="https://signon.bigpond.com/login?goto=https://my.bigpond.com/mybigpond/default.do&amp;ref=Net-Header-ProductServices-MyBigPond2">My BigPond</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://messaging.bigpond.com/?ref=Net-Header-ProductServices-Webmail">Webmail</a></li>
+
+                    <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://go.bigpond.com/services/online-security/?ref=Net-Header-ProductServices-Security">Security</a></li>
+                </ul>
+
+                <div id="bxb-ad-EAEAA" class="bxb-ad" data-promo-src="/bphf/header/adh.html?id=185X185_1&#38;position=1"></div>
+
+            </section></li>
+
+        <li id="bxb-mega-2" class="bxb-item-l1" role="menuitem" aria-haspopup="true">
+            <h4 class="bxb-item-label"><a class="bxb-trigger" href="javascript:void(0);">News<em class="bxb-item-caption">News, Weather &#38; Money</em></a></h4>
+
+            <section class="bxb-mega">
+                <ul class="bxb-menu-l2 bxb-first bxb-last" role="menu" aria-hidden="true">
+                    <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="http://bigpondnews.com/?ref=Net-Header-News-Home">News</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://weather.bigpondnews.com/national?ref=Net-Header-News-Weather">Weather</a></li>
+
+                    <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://www.bigpondmoney.com.au/home?ref=Net-Header-News-Money">Money</a></li>
+                </ul>
+
+                <div id="bxb-ad-EADAA" class="bxb-ad" data-promo-src="/bphf/header/adh.html?id=185X185_2&#38;position=2"></div>
+
+            </section></li>
+
+        <li id="bxb-mega-3" class="bxb-item-l1" role="menuitem" aria-haspopup="true">
+            <h4 class="bxb-item-label"><a class="bxb-trigger" href="javascript:void(0);">Sport<em class="bxb-item-caption">Footy, Racing &#38; more</em></a></h4>
+
+            <section class="bxb-mega bxb-pos-2">
+                <ul class="bxb-menu-l2 bxb-first bxb-last" role="menu" aria-hidden="true">
+                    <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="http://www.sportsfan.com.au/Default.aspx?ref=Net-Header-Sport-Home">SportsFan</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://www.nrl.com/?ref=Net-Header-Sport-NRL">NRL</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://www.afl.com.au/?ref=Net-Header-Sport-AFL">AFL</a></li>
+
+                    <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://www.racingnetwork.com.au/?ref=Net-Header-Sport-HorseRacing">Racing Network</a></li>
+                </ul>
+
+                <div id="bxb-ad-EACAA" class="bxb-ad" data-promo-src="/bphf/header/adh.html?id=185X185_3&#38;position=3"></div>
+
+            </section></li>
+
+        <li id="bxb-mega-4" class="bxb-item-l1" role="menuitem" aria-haspopup="true">
+            <h4 class="bxb-item-label"><a class="bxb-trigger" href="javascript:void(0);">Entertainment<em class="bxb-item-caption">Music, Games, Movies &#38; more</em></a></h4>
+
+            <section class="bxb-mega bxb-pos-3">
+                <ul class="bxb-menu-l2 bxb-first" role="menu" aria-hidden="true">
+                    <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="http://bigpondmusic.com/?ref=Net-Header-Entertainment-Music">Music</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://bigpondmusic.com/mog/?ref=Net-Header-Entertainment-MOG">MOG</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://www.gamearena.com.au/shop/gamenow/?ref=Net-Header-Entertainment-Gamesshop">gameNOW</a></li>
+
+                    <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://www.gamearena.com.au/?ref=Net-Header-Entertainment-Gamearena">GameArena</a></li>
+                </ul>
+
+                <ul class="bxb-menu-l2 bxb-last" role="menu" aria-hidden="true">
+                    <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="http://bigpondmovies.com/?ref=Net-Header-Entertainment-Movies">Movies</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://bigpondvideo.com/?ref=Net-Header-Entertainment-Video">Video</a></li>
+
+                    <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://mobilefun.telstra.com/?ref=Net-Header-Entertainment-MobileFun">Mobile Fun</a></li>
+                </ul>
+
+                <div id="bxb-ad-EABAA" class="bxb-ad" data-promo-src="/bphf/header/adh.html?id=185X185_4&#38;position=4"></div>
+
+            </section></li>
+
+        <li id="bxb-mega-5" class="bxb-item-l1 bxb-last" role="menuitem" aria-haspopup="true">
+            <h4 class="bxb-item-label"><a class="bxb-trigger" href="javascript:void(0);">Lifestyle<em class="bxb-item-caption">Shop, Sell, Dining out &#38; more</em></a></h4>
+
+            <section class="bxb-mega bxb-pos-3">
+                <ul class="bxb-menu-l2 bxb-first" role="menu" aria-hidden="true">
+                    <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="http://go.bigpond.com/lifestyle/?ref=Net-Header-Lifestyle-Home">Lifestyle</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://bigpond-dining.dimmi.com.au/?ref=Net-Header-Lifestyle-Dining">Dining</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://bigpond.eharmony.com.au/?cid=55653&amp;aid=1000&amp;pid=10001&amp;ref=Net-Header-Lifestyle-Dating">Dating</a></li>
+
+                    <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://bigpondtickets.showbiz.com.au?ref=Net-Header-Lifestyle-Tickets">Tickets</a></li>
+                </ul>
+
+                <ul class="bxb-menu-l2 bxb-last" role="menu" aria-hidden="true">
+                    <li class="bxb-item-l2 bxb-first" role="menuitem"><a href="http://shop.bigpond.com/?ref=Net-Header-Lifestyle-Shopping">Shopping</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://www.tradingpost.com.au/?ref=Net-Header-Lifestyle-Tradingpost">Tradingpost</a></li>
+
+                    <li class="bxb-item-l2" role="menuitem"><a href="http://www.carshowroom.com.au?ref=Net-Header-Lifestyle-CarShowroom">CarShowroom</a></li>
+
+                    <li class="bxb-item-l2 bxb-last" role="menuitem"><a href="http://bigpond.domain.com.au?ref=Net-Header-Lifestyle-Property">Property</a></li>
+                </ul>
+
+                <div id="bxb-ad-EAAAA" class="bxb-ad" data-promo-src="/bphf/header/adh.html?id=185X185_5&#38;position=5"></div>
+
+            </section></li>
+    </ul>
+
+</nav></section><section id="bxb-separator-dark"></section></header></div>
+
+<a id="bxb-content" name="bxb-content">Main content</a><!--googleon: index--><div class="header-container"><div class="page-header wrapper"><!--  afl CHANNELNAV *********** -->
+
+<!-- START interchangeable area - will contain either Match Centre or Leaderboard Ad -->
+<!-- END interchangeable area -->
+
+<div class="nav">
+<form id="search" action="/afl/search" method="get">
+    <label for="search-box">SEARCH</label>
+    <input id="search-box" type="search" class="frm-search" title="SEARCH" name="query"/>
+    <input type="submit" class="btn-go" value="Go" />
+</form>
+<ul>
+<!--Home -- isCurrentChannel::  -->
+<li id="navitem-home" class="navitem active ">
+
+    <a href="/">Home</a><!--2nd level channels iteration ends here-->
+</li>
+<!--News -- isCurrentChannel::  -->
+<li id="navitem-news" class="navitem ">
+
+    <a href="/news">News</a>
+    <!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-latest-afl-news">
+                <!--News -- isCurrentChannel::  -->
+                <li>
+                    <a href="/news">Latest AFL News</a><ul>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--News -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/newsletter">AFL Newsletter Signup</a></li>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--News -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/news/latest-afl-news/views/damian-barrett">Views</a></li>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-2013-fixture-release">
+                <!--News -- isCurrentChannel::  -->
+                <li>
+                    <a href="/fixture">2013 Fixture Release</a><ul>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--News -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/fixture">2013 Premiership Fixture</a></li>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--News -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/fixture/nab-cup">2013 NAB Cup Fixture</a></li>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-draft">
+                <!--News -- isCurrentChannel::  -->
+                <li>
+                    <a href="/news/draft">Draft</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--News -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/news/draft">Draft News</a></li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--News -- isCurrentChannel::  -->
+                        <li>
+                            <a href="http://drafttracker.afl.com.au">Draft Tracker</a></li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-trade">
+                <!--News -- isCurrentChannel::  -->
+                <li>
+                    <a href="/news/trade">Trade</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--News -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/news/trade">Trade Hub</a></li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--News -- isCurrentChannel::  -->
+                        <li>
+                            <a href="http://trademachine.afl.com.au/">Trade Machine</a></li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-review-2012">
+                <!--News -- isCurrentChannel::  -->
+                <li>
+                    <a href="#">Review 2012</a><ul>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--News -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/ladder">Final Ladder</a></li>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--News -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/news/review-2012/retirements-delistings-and-departures">Retirements, Delistings &amp; Departures</a>
+                    </li>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-team-line-ups">
+                <!--News -- isCurrentChannel::  -->
+                <li>
+                    <a href="/news/teams">Team Line-Ups</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+<!--Video -- isCurrentChannel::  -->
+<li id="navitem-video" class="navitem ">
+
+    <a href="/video">Video</a>
+    <!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-latest-videos">
+                <!--Video -- isCurrentChannel::  -->
+                <li>
+                    <a href="/video">Latest Videos</a><ul>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--Video -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/video/latest-videos/news">News</a>
+                    </li>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--Video -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/video/latest-videos/media-conferences">Press Conferences</a>
+                    </li>
+                    <!-- 3rd level channels iteration starts here -->
+                    <!--Video -- isCurrentChannel::  -->
+                    <li>
+                        <a href="/video/latest-videos/nab-cup-replays">NAB Cup replays</a>
+                    </li>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-featured-programs">
+                <!--Video -- isCurrentChannel::  -->
+                <li>
+                    <a href="/video/featured-programs">Featured Programs</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Video -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/video/featured-programs/access-all-areas">Access All Areas</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Video -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/video/featured-programs/the-10">The 10</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Video -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/video/featured-programs/personal-best">Personal Best</a>
+                        </li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-smart-replay">
+                <!--Video -- isCurrentChannel::  -->
+                <li>
+                    <a href="/video/smart-replay">Smart Replay</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-watch-live-overseas">
+                <!--Video -- isCurrentChannel::  -->
+                <li>
+                    <a target="_blank" href="http://afltv.afl.com.au">Watch Live Overseas</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+<!--Fixtures &amp; Results -- isCurrentChannel::  -->
+<li id="navitem-fixtures-and-results" class="navitem ">
+
+    <a href="/fixture">Fixtures & Results</a>
+    <!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-2013-afl-fixture">
+                <!--Fixtures &amp; Results -- isCurrentChannel::  -->
+                <li>
+                    <a href="/fixture">2013 AFL Fixture</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-2013-nab-cup">
+                <!--Fixtures &amp; Results -- isCurrentChannel::  -->
+                <li>
+                    <a href="/fixture/nab-cup">2013 NAB Cup</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-foxtel-cup">
+                <!--Fixtures &amp; Results -- isCurrentChannel::  -->
+                <li>
+                    <a href="/fixture/foxtelcup">FOXTEL Cup</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-venue-information">
+                <!--Fixtures &amp; Results -- isCurrentChannel::  -->
+                <li>
+                    <a href="/fixture/venue-information">Venue Information</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+<!--Ladder -- isCurrentChannel::  -->
+<li id="navitem-ladder" class="navitem ">
+
+    <a href="/ladder">Ladder</a>
+    <!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-nab-cup-ladder">
+                <!--Ladder -- isCurrentChannel::  -->
+                <li>
+                    <a href="/ladder/nab-cup-ladder">NAB Cup Ladder</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+<!--Stats -- isCurrentChannel::  -->
+<li id="navitem-stats" class="navitem ">
+
+    <a href="/stats">Stats</a>
+    <!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-match-stats">
+                <!--Stats -- isCurrentChannel::  -->
+                <li>
+                    <a href="/stats">Match Stats</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-awards">
+                <!--Stats -- isCurrentChannel::  -->
+                <li>
+                    <a href="/stats/awards">Awards</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Stats -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/">Brownlow Medal</a></li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Stats -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/stats/awards/coleman-medal">Coleman Medal</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Stats -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/stats/awards/norm-smith-medal">Norm Smith Medal</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Stats -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/stats/awards/jock-mchale-medal">Jock McHale Medal</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Stats -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/stats/awards/morrish-medal">Morrish Medal</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Stats -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/stats/awards/gardiner-medal">Gardiner Medal</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Stats -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/stats/awards/life-members">Life Members</a>
+                        </li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+<!--TV &amp; Radio -- isCurrentChannel::  -->
+<li id="navitem-tv-and-radio" class="navitem ">
+
+    <a href="/tv-radio/broadcast-guide">TV & Radio</a><!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-2013-broadcast-guide">
+                <!--TV &amp; Radio -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tv-radio/broadcast-guide">2013 Broadcast Guide</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-2013-broadcast-information">
+                <!--TV &amp; Radio -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tv-radio/2013-broadcast-information">2013 Broadcast Information</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--TV &amp; Radio -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tv-radio/2013-broadcast-information/2013-afl-event-broadcasts">2013 AFL Event Broadcasts</a>
+                        </li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-domestic-broadcast-partners">
+                <!--TV &amp; Radio -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tv-radio/domestic-broadcast-partners">Domestic Broadcast Partners</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--TV &amp; Radio -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tv-radio/domestic-broadcast-partners/television-programs">Television Programs</a>
+                        </li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-international-broadcast-partners">
+                <!--TV &amp; Radio -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tv-radio/international-broadcast-partners">International Broadcast Partners</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-2012-2016-broadcast-rights">
+                <!--TV &amp; Radio -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tv-radio/2012-2016-broadcast-rights">2012-2016 Broadcast Rights</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--TV &amp; Radio -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tv-radio/2012-2016-broadcast-rights/radio-rights">Radio Rights</a>
+                        </li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+<!--Tickets -- isCurrentChannel::  -->
+<li id="navitem-tickets" class="navitem ">
+
+    <a href="/tickets">Tickets</a>
+    <!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-venues">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tickets/venues">Venues</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/mcg">MCG</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/etihad">Etihad</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/aami-stadium">AAMI Stadium</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/patersons-stadium">Patersons Stadium</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/metricon-stadium">Metricon Stadium</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/gabba">Gabba</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/scg">SCG</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/simonds-stadium">Simonds Stadium</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/aurora-stadium">Aurora Stadium</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues/skoda-stadium">Skoda Stadium</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/venues">More venues...</a></li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-travel-packages">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a href="http://www.anygameanywhere.com.au/">AFL Travel Packages</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-grand-final-tickets-and-packages">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a title="Grand Final Tickets &amp; Packages" alt="Grand Final Tickets &amp; Packages" href="http://www.afleventoffice.com.au/grand_final_packages.asp">Grand Final Tickets & Packages</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-event-office">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a title="AFL Event Office" alt="AFL Event Office" href="http://www.afleventoffice.com.au/2012.asp">AFL Event Office</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-events-and-hospitality">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tickets/events-and-hospitality">Events &amp; Hospitality</a>
+                    <ul>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/events-and-hospitality/premiership-club">Premiership Club</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/events-and-hospitality/afl-corporate-suites">AFL Corporate Suites</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/events-and-hospitality/grand-final-centre-square">Grand Final Centre Square</a>
+                        </li>
+                        <!-- 3rd level channels iteration starts here -->
+                        <!--Tickets -- isCurrentChannel::  -->
+                        <li>
+                            <a href="/tickets/events-and-hospitality/finals-packages">Finals Packages</a>
+                        </li>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-conditions-of-entry">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tickets/conditions-of-entry">Conditions of Entry</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-community-support-ticketing-program">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tickets/afl-community-support-ticketing-program">AFL Community Support Ticketing Program</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-ticket-prices">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tickets/ticket-prices">Ticket prices</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-entertainment-book">
+                <!--Tickets -- isCurrentChannel::  -->
+                <li>
+                    <a href="/tickets/entertainmentbook">Entertainment Book</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+<!--Fantasy -- isCurrentChannel::  -->
+<li id="navitem-fantasy" class="navitem ">
+
+    <a href="http://www.afl.com.au/fantasy/">Fantasy</a><!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-afl-fantasy-hub">
+                <!--Fantasy -- isCurrentChannel::  -->
+                <li>
+                    <a href="/fantasy">AFL Fantasy Hub</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-fantasy-dream-team">
+                <!--Fantasy -- isCurrentChannel::  -->
+                <li>
+                    <a target="_blank" href="http://dreamteam.afl.com.au/">AFL Fantasy Dream Team</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-fantasy-elite">
+                <!--Fantasy -- isCurrentChannel::  -->
+                <li>
+                    <a target="_blank" href="http://fantasyelite.afl.com.au/">AFL Fantasy Elite</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-fantasy-match-day">
+                <!--Fantasy -- isCurrentChannel::  -->
+                <li>
+                    <a target="_blank" href="http://fantasymatchday.afl.com.au/">AFL Fantasy Match Day</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+<!--Tipping -- isCurrentChannel::  -->
+<li id="navitem-tipping" class="navitem ">
+
+    <a target="_blank" href="http://tipping.afl.com.au">Tipping</a><!--2nd level channels iteration ends here-->
+</li>
+<!--Mobile -- isCurrentChannel::  -->
+<li id="navitem-mobile" class="navitem ">
+
+    <a href="/mobile">Mobile</a>
+    <!--2nd level channels iteration ends here-->
+</li>
+<!--Shop -- isCurrentChannel::  -->
+<li id="navitem-shop" class="navitem ">
+
+    <a target="_blank" href="http://shop.afl.com.au/">Shop</a><!--2nd level channels iteration starts-->
+    <div class="subnav-wrapper" style="display: none;">
+        <div class="subnav-items">
+            <ul class="subnav" id="subnav-afl-stores">
+                <!--Shop -- isCurrentChannel::  -->
+                <li>
+                    <a target="_blank" href="http://theaflstore.com.au/">AFL Stores</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-event-packages">
+                <!--Shop -- isCurrentChannel::  -->
+                <li>
+                    <a target="_blank" href="http://www.afleventoffice.com.au/2012.asp">AFL Event Packages</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-development-resources">
+                <!--Shop -- isCurrentChannel::  -->
+                <li>
+                    <a target="_blank" href="https://shopdesq.imgstg.com/index.cfm?orgId=1754">Development Resources</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-auctions">
+                <!--Shop -- isCurrentChannel::  -->
+                <li>
+                    <a target="_blank" href="http://www.aflauctions.com.au/">AFL Auctions</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-club-shops">
+                <!--Shop -- isCurrentChannel::  -->
+                <li>
+                    <a href="http://shop.afl.com.au/">Club Shops</a><ul>
+                    <!-- 3rd level channels iteration ends here -->
+                </ul>
+                </li>
+            </ul>
+            <!--2nd level channels iteration starts-->
+            <ul class="subnav" id="subnav-afl-record-for-ipad">
+                <!--Shop -- isCurrentChannel::  -->
+                <li>
+                    <a href="/shop/afl-record-for-ipad">AFL Record for iPad</a>
+                    <ul>
+                        <!-- 3rd level channels iteration ends here -->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!--2nd level channels iteration ends here-->
+</li>
+</ul>
+</div>
+
+<div id="logo-afl" style=" top: 0 !important; left: 0 !important;"><a title="Home" href="/"><img alt="AFL NAB Cup 2013" height="107" src="/staticfile/AFL%20Tenant/AFL/Static%20Files/logo_2013.png" width="87"></a></div>
+
+<div class="teams">
+    <div class="partner-logos"><a title="Bigpond Unlimited" target="_blank" href="http://bigpond.com/unmetered/">Bigpond Unmetered</a>
+
+        <ul id="header-sponsors">
+            <li><img height="25" src="/staticfile/AFL%20Tenant/Shared/Sponsor/Images/logo-carltondraught.gif" width="65"></li>
+
+            <li><img alt="Drink more coke" height="25" src="/staticfile/AFL%20Tenant/Shared/Sponsor/Images/logo-coca.gif" width="65"></li>
+
+            <li><img alt="Welcome to NAB" height="25" src="/staticfile/AFL%20Tenant/Shared/Sponsor/Images/logo-nab.gif" width="65"></li>
+
+            <li><img alt="OPSM sponsor" height="25" src="/staticfile/AFL%20Tenant/Shared/Sponsor/Images/logo-OPSM.gif" width="65"></li>
+        </ul>
+
+        <a title="Toyota" target="_blank" href="http://www.toyota.com.au/"><img alt="Toyota AFL Premier Partner" height="25" src="/staticfile/AFL%20Tenant/AFL/Branding/Online/Images/toyota-afl-premier-partner.png" width="73"></a></div>
+
+    <ul>
+        <li class="team-logo-hd lineup-adel"><a title="Adelaide Crows" target="_blank" href="http://afc.com.au/">Adelaide Crows</a></li>
+
+        <li class="team-logo-hd lineup-bl"><a title="Brisbane Lions" target="_blank" href="http://lions.com.au/">Brisbane Lions</a></li>
+
+        <li class="team-logo-hd lineup-carl"><a title="Carlton" target="_blank" href="http://carltonfc.com.au/">Carlton</a></li>
+
+        <li class="team-logo-hd lineup-coll"><a title="Collingwood" target="_blank" href="http://collingwoodfc.com.au/">Collingwood</a></li>
+
+        <li class="team-logo-hd lineup-ess"><a title="Essendon" target="_blank" href="http://essendonfc.com.au/">Essendon</a></li>
+
+        <li class="team-logo-hd lineup-fre"><a title="Fremantle" target="_blank" href="http://fremantlefc.com.au/">Fremantle</a></li>
+
+        <li class="team-logo-hd lineup-geel"><a title="Geelong Cats" target="_blank" href="http://geelongcats.com.au/">Geelong Cats</a></li>
+
+        <li class="team-logo-hd lineup-gcfc"><a title="Gold Coast Suns" target="_blank" href="http://goldcoastfc.com.au/">Gold Coast Suns</a></li>
+
+        <li class="team-logo-hd lineup-gws"><a title="GWS Giants" target="_blank" href="http://gwsgiants.com.au/">GWS Giants</a></li>
+
+        <li class="team-logo-hd lineup-haw"><a title="Hawthorn" target="_blank" href="http://hawthornfc.com.au/">Hawthorn</a></li>
+
+        <li class="team-logo-hd lineup-melb"><a title="Melbourne" target="_blank" href="http://melbournefc.com.au/">Melbourne</a></li>
+
+        <li class="team-logo-hd lineup-nmfc"><a title="North Melbourne" target="_blank" href="http://nmfc.com.au/">North Melbourne</a></li>
+
+        <li class="team-logo-hd lineup-port"><a title="Port Adelaide" target="_blank" href="http://portadelaidefc.com.au/">Port Adelaide</a></li>
+
+        <li class="team-logo-hd lineup-rich"><a title="Richmond" target="_blank" href="http://richmondfc.com.au/">Richmond</a></li>
+
+        <li class="team-logo-hd lineup-stk"><a title="St Kilda" target="_blank" href="http://saints.com.au/">St Kilda</a></li>
+
+        <li class="team-logo-hd lineup-syd"><a title="Sydney Swans" target="_blank" href="http://sydneyswans.com.au/">Sydney Swans</a></li>
+
+        <li class="team-logo-hd lineup-wce"><a title="West Coast Eagles" target="_blank" href="http://westcoasteagles.com.au/">West Coast Eagles</a></li>
+
+        <li class="team-logo-hd lineup-wb"><a title="Western Bulldogs" target="_blank" href="http://westernbulldogs.com.au/">Western Bulldogs</a></li>
+    </ul>
+</div><!--  -->
+<script type="text/javascript">
+    AFL.Properties.MC.current_match = "CD_M20130140106";
+    AFL.Properties.MC.current_round = "CD_R201301401";
+
+    AFL.Properties.GB.AFL.active = true;
+</script>
+<div class="changeable">
+<div id="gamebar">
+<div class="loader hide"><img src="/static-resources/themes/common/images/loading.gif" class="gamebar-loading"/></div>
+<div id="gamebar-wrap">
+<div class="round-block">
+    <div id="gamebar-logo">
+        <p>Match Centre</p>
+    </div>
+
+    <div id="round-info">
+        <span class="arrow-cycle previous-round">&lt;</span>
+        <span class="round-label" id="round-selector-trigger">Rd 1</span>
+        <span class="arrow-cycle next-round">&gt;</span>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<ul class="game-count-9 games">
+
+    <li class="match-block complete-watch">
+        <div class="match-info">
+
+            <a href="/match-centre/2013/1/adel-v-ess" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Fri Mar 22, 20:10</div>
+                </div>
+                <div class="team-details">ADEL<div class="progress-info">11.16.82</div>
+                </div>
+                <div class="team-details winner">ESS<div class="progress-info">18.9.117</div>
+                </div>
+            </a>
+
+            <div class="match-status">
+                <a href="http://www.afl.com.au/video/smart-replay?round=CD_R201301401&matchId=CD_M20130140101">Watch Replay</a>
+            </div>
+        </div>
+    </li>
+    <li class="match-block complete-watch">
+        <div class="match-info">
+
+            <a href="/match-centre/2013/1/fre-v-wce" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Sat Mar 23, 16:40</div>
+                </div>
+                <div class="team-details winner">FRE<div class="progress-info">16.12.108</div>
+                </div>
+                <div class="team-details">WCE<div class="progress-info">11.14.80</div>
+                </div>
+            </a>
+
+            <div class="match-status">
+                <a href="http://www.afl.com.au/video/smart-replay?round=CD_R201301401&matchId=CD_M20130140102">Watch Replay</a>
+            </div>
+        </div>
+    </li>
+    <li class="match-block complete-watch">
+        <div class="match-info">
+
+            <a href="/match-centre/2013/1/carl-v-rich" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Thu Mar 28, 19:45</div>
+                </div>
+                <div class="team-details">CARL<div class="progress-info">14.17.101</div>
+                </div>
+                <div class="team-details winner">RICH<div class="progress-info">14.22.106</div>
+                </div>
+            </a>
+
+            <div class="match-status">
+                <a href="http://www.afl.com.au/video/smart-replay?round=CD_R201301401&matchId=CD_M20130140103">Watch Replay</a>
+            </div>
+        </div>
+    </li>
+    <li class="match-block">
+        <div class="match-info">
+            <a href="/match-centre/2013/1/wb-v-bl" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Sat Mar 30, 13:40</div>
+                </div>
+
+                <div class="team-details">WB<div class="progress-info">ES</div>
+                </div>
+                <div class="team-details">BL<div class="progress-info"></div>
+                </div>
+            </a>
+
+            <div class="match-status"><a href="http://www.ticketmaster.com.au/venueartist/303717/1055618?artistid=1055618&minorcatid=711&date=2013-3-30&camefrom=CFC_AU_AFL_AFLM">BUY TICKETS</a></div>
+        </div>
+    </li>
+    <li class="match-block">
+        <div class="match-info">
+            <a href="/match-centre/2013/1/gws-v-syd" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Sat Mar 30, 16:40</div>
+                </div>
+
+                <div class="team-details">GWS<div class="progress-info">ANZ</div>
+                </div>
+                <div class="team-details">SYD<div class="progress-info"></div>
+                </div>
+            </a>
+
+            <div class="match-status"><a href="http://premier.ticketek.com.au/shows/show.aspx?sh=GIANTS0113">BUY TICKETS</a></div>
+        </div>
+    </li>
+    <li class="match-block watched">
+        <div class="match-info">
+            <a href="/match-centre/2013/1/gcfc-v-stk" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Sat Mar 30, 18:45</div>
+                </div>
+
+                <div class="team-details">GCFC<div class="progress-info">MS</div>
+                </div>
+                <div class="team-details">STK<div class="progress-info"></div>
+                </div>
+            </a>
+
+            <div class="match-status"><a href="http://www.ticketmaster.com.au/venueartist/156357/1436352?artistid=1436352&minorcatid=711&date=2013-3-30&camefrom=CFC_AU_AFL_AFLM">BUY TICKETS</a></div>
+        </div>
+    </li>
+    <li class="match-block">
+        <div class="match-info">
+            <a href="/match-centre/2013/1/melb-v-port" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Sun Mar 31, 13:10</div>
+                </div>
+
+                <div class="team-details">MELB<div class="progress-info">MCG</div>
+                </div>
+                <div class="team-details">PORT<div class="progress-info"></div>
+                </div>
+            </a>
+
+            <div class="match-status"><a href="http://premier.ticketek.com.au/shows/show.aspx?sh=MELBO0113">BUY TICKETS</a></div>
+        </div>
+    </li>
+    <li class="match-block">
+        <div class="match-info">
+            <a href="/match-centre/2013/1/nmfc-v-coll" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Sun Mar 31, 16:40</div>
+                </div>
+
+                <div class="team-details">NMFC<div class="progress-info">ES</div>
+                </div>
+                <div class="team-details">COLL<div class="progress-info"></div>
+                </div>
+            </a>
+
+            <div class="match-status"><a href="http://www.ticketmaster.com.au/venueartist/303717/1055715?artistid=1055715&minorcatid=711&date=2013-3-31&camefrom=CFC_AU_AFL_AFLM">BUY TICKETS</a></div>
+        </div>
+    </li>
+    <li class="match-block">
+        <div class="match-info">
+            <a href="/match-centre/2013/1/haw-v-geel" class="match-details-link">
+                <div class="match-details">
+                    <div class="date">Mon Apr 1, 15:20</div>
+                </div>
+
+                <div class="team-details">HAW<div class="progress-info">MCG</div>
+                </div>
+                <div class="team-details">GEEL<div class="progress-info"></div>
+                </div>
+            </a>
+
+            <div class="match-status"><a href="http://premier.ticketek.com.au/shows/show.aspx?sh=HAWTH0113">BUY TICKETS</a></div>
+        </div>
+    </li>
+</ul>
+
+<div class="clearfix"></div>
+<div class="gamebar-round-selector">
+    <div class="round-label">Select round</div>
+    <ul class="round-count-23 rounds">
+        <li><a class="current" href="#/round/CD_R201301401">1</a></li>
+
+        <li><a href="#/round/CD_R201301402">2</a></li>
+
+        <li><a href="#/round/CD_R201301403">3</a></li>
+
+        <li><a href="#/round/CD_R201301404">4</a></li>
+
+        <li><a href="#/round/CD_R201301405">5</a></li>
+
+        <li><a href="#/round/CD_R201301406">6</a></li>
+
+        <li><a href="#/round/CD_R201301407">7</a></li>
+
+        <li><a href="#/round/CD_R201301408">8</a></li>
+
+        <li><a href="#/round/CD_R201301409">9</a></li>
+
+        <li><a href="#/round/CD_R201301410">10</a></li>
+
+        <li><a href="#/round/CD_R201301411">11</a></li>
+
+        <li><a href="#/round/CD_R201301412">12</a></li>
+
+        <li><a href="#/round/CD_R201301413">13</a></li>
+
+        <li><a href="#/round/CD_R201301414">14</a></li>
+
+        <li><a href="#/round/CD_R201301415">15</a></li>
+
+        <li><a href="#/round/CD_R201301416">16</a></li>
+
+        <li><a href="#/round/CD_R201301417">17</a></li>
+
+        <li><a href="#/round/CD_R201301418">18</a></li>
+
+        <li><a href="#/round/CD_R201301419">19</a></li>
+
+        <li><a href="#/round/CD_R201301420">20</a></li>
+
+        <li><a href="#/round/CD_R201301421">21</a></li>
+
+        <li><a href="#/round/CD_R201301422">22</a></li>
+
+        <li><a href="#/round/CD_R201301423">23</a></li>
+
+    </ul>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/template" id="match-block-scheduled">
+    <div class="match-info">
+        <a href="<%= helper.matchLink() %>" class="match-details-link">
+            <div class="match-details"><div class="date"><%= helper.formatDate() %></div></div>
+            <div class="team-details"><%= info.getHomeTeam() %>
+                <div class="progress-info"><%= info.getVenue() %></div>
+            </div>
+            <div class="team-details"><%= info.getAwayTeam() %>
+                <div class="progress-info"></div>
+            </div>
+        </a>
+        <div class="match-status"><a href="<%= helper.ticketLink() %>">BUY TICKETS</a></div>
+    </div>
+</script>
+
+<script type="text/template" id="match-block-live">
+    <div class="match-info">
+        <a href="<%= helper.matchLink() %>" class="match-details-link">
+            <div class="match-details">
+                <div class="venue"><%= info.getVenue() %></div>
+                <div class="clock"><%= helper.periodName() %></div>
+            </div>
+            <div class="team-details"><%= info.getHomeTeam() %>
+                <div class="progress-info"><% if (info.hasHomeTeamScore()) { %><%= info.getHomeTeamScore().goals %>.<%= info.getHomeTeamScore().behinds %>.<%= info.getHomeTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="team-details"><%= info.getAwayTeam() %>
+                <div class="progress-info"><% if (info.hasAwayTeamScore()) { %><%= info.getAwayTeamScore().goals %>.<%= info.getAwayTeamScore().behinds %>.<%= info.getAwayTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="match-status">Live Now</div>
+        </a>
+    </div>
+</script>
+
+<script type="text/template" id="match-block-concluded">
+    <div class="match-info">
+        <a href="<%= helper.matchLink() %>" class="match-details-link">
+            <div class="match-details">
+                <div class="date"><%= helper.formatDate() %></div>
+            </div>
+            <div class="team-details<%= (info.isHomeWinner() ? ' winner' : '') %>"><%= info.getHomeTeam() %>
+                <div class="progress-info"><% if (info.hasHomeTeamScore()) { %><%= info.getHomeTeamScore().goals %>.<%= info.getHomeTeamScore().behinds %>.<%= info.getHomeTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="team-details<%= (info.isAwayWinner() ? ' winner' : '') %>"><%= info.getAwayTeam() %>
+                <div class="progress-info"><% if (info.hasAwayTeamScore()) { %><%= info.getAwayTeamScore().goals %>.<%= info.getAwayTeamScore().behinds %>.<%= info.getAwayTeamScore().totalScore %><% } %></div>
+            </div>
+        </a>
+        <div class="match-status">
+            <a href="<%= helper.replayLink() %>">Watch Replay</a>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="match-block-fulltime">
+    <div class="match-info">
+        <a href="<%= helper.matchLink() %>" class="match-details-link">
+            <div class="match-details"><div class="date"><%= helper.formatDate() %></div></div>
+            <div class="team-details<%= (info.isHomeWinner() ? ' winner' : '') %>"><%= info.getHomeTeam() %>
+                <div class="progress-info"><% if (info.hasHomeTeamScore()) { %><%= info.getHomeTeamScore().goals %>.<%= info.getHomeTeamScore().behinds %>.<%= info.getHomeTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="team-details<%= (info.isAwayWinner() ? ' winner' : '') %>"><%= info.getAwayTeam() %>
+                <div class="progress-info"><% if (info.hasAwayTeamScore()) { %><%= info.getAwayTeamScore().goals %>.<%= info.getAwayTeamScore().behinds %>.<%= info.getAwayTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="match-status">Full Time</div></a>
+    </div>
+</script>
+
+<script type="text/template" id="match-block-byes">
+    <div class="match-info">
+        <div class="match-details">Byes</div>
+        <div class="team-details">
+            <ul class="match-byes-list">
+                <% _.each(items, function(bye) { %>
+                <li><%= bye.getTeamName() %>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
+</script></div> </div></div>
+<div id="dd-prompt">
+    <div class="dd-prompt-cont">
+        <a class="dd-prompt-close" href="#">Close</a>
+        <h3><span class="afl-logo">AFL</span> on your mobile</h3>
+        <div class="dd-prompt-button"><a id="dd-prompt-app" href="#">Download our free app</a></div>
+        <div class="dd-prompt-button"><a href="http://m.afl.com.au/?devdomor=mobile">Visit our mobile site</a></div>
+    </div>
+</div>
+<noscript>
+    <style type="text/css">
+        .wrapper.page {
+            margin-top: -10px !Important;
+            padding:10px 20px 1px !Important;
+        }
+        .wrapper_message {
+            padding:20px 20px 1px 20px;
+            background-color:#FFFFFF;
+        }
+    </style>
+    <div class="wrapper">
+        <div class="wrapper_message">
+            <div class="messaging warning">
+                <p>It appears that your browser has JavaScript disabled.<br>
+                    To get the most out of the AFL website, we require you to have JavaScript enabled.</p>
+            </div>
+        </div>
+    </div>
+</noscript><!--TIME ELAPSED (Global Header Region): 1816--><!-- START body content wrapper -->
+<script type="text/javascript">
+    var currentClientDate = new Date();
+    var currentClientTimeMillis = currentClientDate.getTime();
+    var clientTzOffset = currentClientDate.getTimezoneOffset();
+    var tzDifference = (-660 - clientTzOffset ) * 60 * 1000;
+    var refreshDelay = 1364633100000 - currentClientTimeMillis - tzDifference;
+    if (refreshDelay < 0)
+        refreshDelay =  5 * 60 * 1000;
+    setTimeout(function() {location.reload(true);}, refreshDelay);
+</script>
+<div class="page wrapper">
+
+<!-- START Match Centre -->
+<div id="pre-game" class="match-centre">
+<div class="mc-header">
+    <!-- START Match Centre Summary -->
+    <div class="top-section">
+        <h2>Match Centre</h2>
+
+        <ul class="match-details">
+            <li>
+                <span>Round 1</span>
+
+                6:45 PM March 30, 2013</li>
+            <li>Gold Coast Suns v St Kilda</li>
+        </ul>
+
+        <ul class="conditions">
+            <li>Metricon Stadium</li>
+            <li class="weather mostly-sunny">28&deg; Mainly fine, possible shower.</li>
+        </ul>
+    </div>
+
+    <div class="bottom-section">
+
+        <div class="strap">
+
+            <div class="sportsbet-box">
+
+                <div class="odds">
+                    <a href="http://media.sensis.com.au/adclick/CID=0004458e0000000000000000" target="_blank"><h3>ODDS</h3></a>
+                    <span class="tracker"></span>
+                </div>
+
+                <div class="value">
+                    <a href="http://media.sensis.com.au/adclick/CID=0004458c0000000000000000">$3.35</a>
+                    <span class="tracker"></span>
+                </div>
+
+                <div class="sportsbet-logo">
+                    <a href="http://media.sensis.com.au/adclick/CID=0004458d0000000000000000">TAB Sportsbet</a><span class="tracker"></span>
+                </div>
+            </div>
+            <div class="home-team">
+                <p>
+                    <a title="Gold Coast Suns" class="team-logo-med lineup-gcfc">Gold Coast Suns</a>
+                </p>
+            </div>
+
+            <div class="sportsbet-box right">
+                <div class="odds">
+                    <a href="http://media.sensis.com.au/adclick/CID=0004458e0000000000000000"><h3>ODDS</h3></a>
+                    <span class="tracker"></span>
+                </div>
+
+                <div class="value">
+                    <a href="http://media.sensis.com.au/adclick/CID=0004458c0000000000000000">$1.33</a>
+                    <span class="tracker"></span>
+                </div>
+
+                <div class="sportsbet-logo">
+                    <a href="http://media.sensis.com.au/adclick/CID=0004458d0000000000000000">TAB Sportsbet</a>
+                    <span class="tracker"></span>
+                </div>
+            </div>
+            <div class="away-team">
+                <p>
+                    <a title="St Kilda" class="team-logo-med lineup-stk">St Kilda</a>
+                </p>
+            </div>
+
+            <div class="match-info">
+                <p class="match-day">
+                    Saturday&nbsp;6:45 PM<abbr title="Australian Eastern Standard Time">AEST</abbr>
+                </p>
+
+                <p class="venue">Metricon Stadium</p>
+                <a class="button aflbluebtn" href="http://www.ticketmaster.com.au/venueartist/156357/1436352?artistid=1436352&minorcatid=711&date=2013-3-30&camefrom=CFC_AU_AFL_AFLM" target="_blank">Buy Tickets</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mc-content">
+<div class="mc-body">
+<div id="team-forms" class="module">
+    <div class="module" id="team-form">
+        <div class="module-header">
+            <a class="flag team-gcfc">Gold Coast Suns</a>
+            <h3 class="form">Form</h3>
+            <a class="flag team-stk">St Kilda</a>
+        </div>
+        <div class="module-content">
+            <table>
+                <tbody>
+                <tr>
+                    <td id="team1-wins"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Wins</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-wins"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+                <tr class="last-of-section">
+                    <td id="team1-losses"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Losses</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-losses"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+                <tr>
+                    <td id="team1-percentage"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0.0</td>
+                    <th>%</th>
+                    <td class="team2-value">0.0</td>
+                    <td id="team2-percentage"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+                <tr>
+                    <td id="team1-ptsfor"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Points For</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-ptsfor"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+                <tr class="last-of-section">
+                    <td id="team1-ptsagainst"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Points Against</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-ptsagainst"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+                <tr class="last-of-section">
+                    <td colspan="2"></td>
+                    <th>Form</th>
+                    <td colspan="2"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="recent-encounters" class="module">
+    <div class="module-header">
+        <h3>Recent Encounters</h3>
+    </div>
+    <div class="module-content">
+        <table class="zebra">
+            <thead>
+            <tr>
+                <th>Round</th>
+                <th>Result</th>
+                <th>Venue</th>
+                <th>Replay</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr class="">
+                <td>R11,&nbsp;2012</td>
+
+                <td class="result">
+                    <a href="/match-centre/2012/11/gcfc-v-stk">
+                        <p class="adv">
+                            Gold Coast Suns<span class="result-value"> 7.7 (49)</span>
+                        </p>
+                        <p>
+                            St Kilda<span class="result-value">21.18 (144)</span>
+                        </p>
+                    </a>
+                </td>
+
+                <td>MS</td>
+
+                <td class="replay-btn">
+                    <a href="http://www.afl.com.au/video/smart-replay?round=CD_R201201411&matchId=CD_M20120141103">Replay</a>
+                </td>
+            </tr>
+
+            <tr class="stevens">
+                <td>R2,&nbsp;2012</td>
+
+                <td class="result">
+                    <a href="/match-centre/2012/2/stk-v-gcfc">
+                        <p class="adv">
+                            St Kilda<span class="result-value"> 21.13 (139)</span>
+                        </p>
+                        <p>
+                            Gold Coast Suns<span class="result-value">7.5 (47)</span>
+                        </p>
+                    </a>
+                </td>
+
+                <td>ES</td>
+
+                <td class="replay-btn">
+                    <a href="http://www.afl.com.au/video/smart-replay?round=CD_R201201402&matchId=CD_M20120140208">Replay</a>
+                </td>
+            </tr>
+
+            <tr class="">
+                <td>R19,&nbsp;2011</td>
+
+                <td class="result">
+                    <a href="/match-centre/2011/19/gcfc-v-stk">
+                        <p class="adv">
+                            Gold Coast Suns<span class="result-value"> 6.18 (54)</span>
+                        </p>
+                        <p>
+                            St Kilda<span class="result-value">10.14 (74)</span>
+                        </p>
+                    </a>
+                </td>
+
+                <td>MS</td>
+
+                <td class="replay-btn">
+                    <a href="http://www.afl.com.au/video/smart-replay?round=CD_R201101419&matchId=CD_M20110141904">Replay</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="season-stats" class="module last">
+    <div id="season-stats" class="module">
+        <div class="module-header">
+            <a href="#" class="flag team-gcfc">Gold Coast Suns</a>
+            <h3>Stats</h3>
+            <a href="#" class="flag team-stk">St Kilda</a>
+        </div>
+
+        <div class="module-content">
+            <table>
+                <tbody>
+                <tr>
+                    <td id="team1-disposals"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Disposals</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-disposals"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+
+                <tr>
+                    <td id="team1-clearances"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Clearances</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-clearances"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+
+                <tr>
+                    <td id="team1-inside50"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Inside 50</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-inside50"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+
+                <tr>
+                    <td id="team1-contpos"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Contested Possessions</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-contpos"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+
+                <tr>
+                    <td id="team1-tackles"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Tackles</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-tackles"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+
+                <tr>
+                    <td id="team1-hitouts"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Hit-Outs</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-hitouts"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+
+                <tr>
+                    <td id="team1-freekicks"><span style="width: NaN%;"></span></td>
+                    <td class="team1-value">0</td>
+                    <th>Free Kicks</th>
+                    <td class="team2-value">0</td>
+                    <td id="team2-freekicks"><span class="adv" style="width: NaN%;"></span></td>
+                </tr>
+                </tbody>
+            </table>
+            <p>* Season Averages</p>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+<div class="mc-footer">
+    <p>Carlton Draught made from beer</p></div>
+
+<!-- END Match Centre -->
+
+<!-- START tabs -->
+<div class="tabs">
+
+<ul class="mc-tabs">
+    <li id="match-report-tab"><a href="#match-preview">Match Preview</a></li>
+    <li><a href="#team-lineups">Team Lineups</a></li>
+    <li><a href="#live-odds">Live Odds</a></li>
+</ul>
+
+</ul>
+
+<div id="match-preview">
+    <h3 class="tab-noscript">Match Preview</h3>
+    <div class="double-col column last-col aside">
+        <div class="segment">
+            <div class="section-header bare">
+                <h3>Related Videos</h3>
+            </div>
+            <div class="content">
+                <div class="list-item vidlist">
+                    <div class="video-link img-holder">
+                        <a><img alt="" src="/staticfile/AFL Tenant/Media/Videos/Thumbnails/532403_thumb.jpg"/></a>
+
+                        <div class="play-btn"><a href="/video/2013-03-28/2xu-recovery-alex-sexton"></a></div>
+                    </div>
+                    <div class="inner">
+                        <h4>
+                            <a href="/video/2013-03-28/2xu-recovery-alex-sexton">
+                                2XU Recovery: Alex Sexton</a>
+                        </h4>
+                        <p class="pubdate" data-time="1364461308000">
+                            8:01pm&nbsp;Mar 28, 2013</p>
+                    </div>
+                </div>
+                <div class="list-item vidlist">
+                    <div class="video-link img-holder">
+                        <a><img alt="" src="/staticfile/AFL Tenant/Media/Videos/Thumbnails/532400_thumb.jpg"/></a>
+
+                        <div class="play-btn"><a href="/video/2013-03-28/favourite-suns-season-return"></a></div>
+                    </div>
+                    <div class="inner">
+                        <h4>
+                            <a href="/video/2013-03-28/favourite-suns-season-return">
+                                Favourite SUNS: Season Return</a>
+                        </h4>
+                        <p class="pubdate" data-time="1364460830000">
+                            7:53pm&nbsp;Mar 28, 2013</p>
+                    </div>
+                </div>
+                <div class="list-item vidlist">
+                    <div class="video-link img-holder">
+                        <a><img alt="" src="/staticfile/AFL Tenant/Media/Videos/Thumbnails/532380_thumb.jpg"/></a>
+
+                        <div class="play-btn"><a href="/video/2013-03-28/suns-gold"></a></div>
+                    </div>
+                    <div class="inner">
+                        <h4>
+                            <a href="/video/2013-03-28/suns-gold">
+                                SUNS Gold</a>
+                        </h4>
+                        <p class="pubdate" data-time="1364458785000">
+                            7:19pm&nbsp;Mar 28, 2013</p>
+                    </div>
+                </div>
+                <div class="list-item vidlist">
+                    <div class="video-link img-holder">
+                        <a><img alt="" src="/staticfile/AFL Tenant/Media/Videos/Thumbnails/532366_thumb.jpg"/></a>
+
+                        <div class="play-btn"><a href="/video/2013-03-28/mckenna-on-rd-1-team"></a></div>
+                    </div>
+                    <div class="inner">
+                        <h4>
+                            <a href="/video/2013-03-28/mckenna-on-rd-1-team">
+                                McKenna on Rd 1 Team</a>
+                        </h4>
+                        <p class="pubdate" data-time="1364452515000">
+                            5:35pm&nbsp;Mar 28, 2013</p>
+                    </div>
+                </div>
+                <div class="list-item vidlist last">
+                    <div class="video-link img-holder">
+                        <a><img alt="" src="/staticfile/AFL Tenant/Media/Videos/Thumbnails/531943_thumb.jpg"/></a>
+
+                        <div class="play-btn"><a href="/video/2013-03-27/jaeger-omeara-on-debut"></a></div>
+                    </div>
+                    <div class="inner">
+                        <h4>
+                            <a href="/video/2013-03-27/jaeger-omeara-on-debut">
+                                Jaeger O'Meara On Debut</a>
+                        </h4>
+                        <p class="pubdate" data-time="1364364000000">
+                            5:00pm&nbsp;Mar 27, 2013</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="article-col column section">
+        <div class="article">
+            <div class="story-header">
+                <h1>
+                    Preview: Suns v Saints</h1>
+                <p class="story-details">
+
+                    By Michael Whiting<span class="pubdate"> 04:36pm March 26, 13</span>
+                </p>
+            </div>
+            <div class="article-tools">
+                <!-- this sharing bar is still being defined - hold off on marking up until it is confirmed -->
+
+            </div>
+
+            <div class="story-hero">
+                <img src="/staticfile/AFL Tenant/Media/Images/259980-tlsnewslandscape.jpg" alt="259980-tlsnewslandscape.jpg"
+                     title="259980-tlsnewslandscape.jpg" />
+                <p class="caption">
+                    Gary Ablett and Lenny Hayes will lock horns when the Suns host the Saints</p>
+            </div>
+            <div class="aside half-col column last">
+                <!-- START Related Articles -->
+                <!-- END Related Articles -->
+            </div>
+
+            <br>
+            <b>SUMMARY: </b>Two teams that missed the finals last season are desperate to get off on the right foot in 2013. The Suns have won just six times in their first two seasons but with the addition of Greg Broughton (Fremantle), Tom Murphy (Hawthorn) and Jaeger O'Meara, along with natural improvement from their youngsters, are expected to improve this year. The Saints finished ninth last season with a 12-10 record, and despite being favoured to win here, could enter the match with an undermanned defence with both Sam Fisher and Sean Dempster under injury clouds. Is there an upset on the cards?<br>
+            <br>
+            <b>WHERE AND WHEN: </b>Metricon Stadium, Saturday, March 30, 6.45pm<br>
+            <br>
+            <b>TV, RADIO AND BETTING: </b><a href="http://www.afl.com.au/fixture#tround">Click here for broadcast guide</a><br>
+            <br>
+            <b>LAST THREE TIMES</b><br>
+            R11, 2012, St Kilda 21.18 (144) d Gold Coast 7.7 (49) at Metricon Stadium<br>
+            R2, 2012, St Kilda 21.13 (139) d Gold Coast 7.5 (47) at Etihad Stadium<br>
+            R19, 2011, St Kilda 10.14 (74) d Gold Coast 6.18 (54) at Metricon Stadium<br>
+            <br>
+            <b>THE SIX POINTS</b><br>
+            1. The teams met twice last year with St Kilda giving the Suns a hammering on both occasions. In round two at Etihad Stadium the Saints won by 92 points, while in round 11 they notched a 95-point victory.<br>
+            <br>
+            2. The Saints dominated both matches at both ends of the ground, kicking 42 goals and conceding just 14.<br>
+            <br>
+            3. The Suns began to unlock the key to success at Metricon Stadium late last season. After losing their first 17 matches at home, the Suns won their most recent two, defeating GWS and Carlton.<br>
+            <br>
+            4. St Kilda has won its past seven matches in Queensland and hasn’t lost since early in 2008.<br>
+            <br>
+            5. St Kilda will need to watch for Gary Ablett running past the ball carrier - the Suns captain was ranked first for handball receives in 2012.<br>
+            <br>
+            6. Last season the possession difference between the teams was huge, a total of 805 for the Saints in two games compared to the Suns 635.<div class="footer">
+            <p class="disclaimer">The views in this article are those of the author and not necessarily those of the AFL or its clubs</p>
+        </div>
+            <div class="article-tools"></div>
+        </div>
+        <!-- END article column -->
+
+    </div>
+
+</div>
+
+<div id="team-lineups">
+<h3 class="tab-noscript">Team Lineups</h3>
+<div class="section article-col column">
+<div class="team-lineups-options">
+<div class="tabs tabs-sub">
+<div class="filters">
+    <ul class="mc-tabs">
+        <li><a href="#tteamfield">Field View</a></li>
+        <li><a href="#tteamtext">Text View</a></li>
+        <li><a href="#tteamlist">List View</a></li>
+        <li class="last">
+            <div class="more-link" id="stats-team-more-link">
+
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- Begin field view -->
+<div id="tteamfield" class="hide-panel more-options">
+
+<div class="game">
+<div class="lineup">
+    <div class="lineup-detail">
+        <div title="Gold Coast Suns"
+             class="team-logo team1 lineup-gcfc">Gold Coast Suns</div>
+        <div title="St Kilda"
+             class="team-logo team2 lineup-stk">St Kilda</div>
+        <div class="game-detail">
+            <h2>
+                <span class="team1">Gold Coast Suns</span> v <span class="team2">St Kilda</span>
+            </h2>
+            <p class="game-time">
+
+                <abbr title="">MS</abbr>,
+                6:45 pm&nbsp;AEST Saturday, March 30, 2013</p>
+
+        </div>
+    </div>
+    <!-- /lineup-detail -->
+    <div class="inouts">
+
+        <div class="team1">
+            <div class="changeup in">
+                <p class="boxy">
+                    <span>In</span>
+                </p>
+                <ul>
+                    <li class="last">No Change</li>
+                </ul>
+            </div>
+            <div class="changeup new">
+                <p class="boxy">
+                    <span>New</span>
+                </p>
+                <ul>
+                    <li class="">
+                        Thomas&nbsp;Murphy</li>
+
+                    <li class="">
+                        Greg&nbsp;Broughton</li>
+
+                    <li class="last">
+                        Jaeger&nbsp;O&#039;Meara</li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- /team1 -->
+
+        <div class="team2">
+            <div class="changeup in">
+                <p class="boxy">
+                    <span>In</span>
+                </p>
+                <ul>
+                    <li class="last">No Change</li>
+                </ul>
+            </div>
+            <div class="changeup new">
+                <p class="boxy">
+                    <span>New</span>
+                </p>
+                <ul>
+                    <li class="">
+                        Dylan&nbsp;Roberton</li>
+
+                    <li class="last">
+                        Tom&nbsp;Hickey</li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- /team2 -->
+
+    </div>
+    <!-- /inouts -->
+</div>
+
+<div id="fieldInouts" class="field-inouts active">
+<div class="header">
+
+    <h3>Teams</h3>
+    <p class="timestamp">Last updated: <br><span class="pubdate">
+													4:30pm Friday, March 29, 2013</p>
+    <div class="team1 guernsey lineup-gcfc">Gold Coast Suns guernsey</div>
+    <div class="team2 guernsey lineup-stk">St Kilda guernsey</div>
+</div>
+
+
+<div class="posGroup sidebars followers">
+    <ul class="team1 team-gcfc">
+        <li class="team-name"><h4>Gold Coast Suns</h4></li>
+        <li class="pos"><div class="flag"></div>Followers</li>
+        <li class="player"><span class="num">2</span>
+
+            Zac&nbsp;Smith</li>
+        <li class="player"><span class="num">7</span>
+
+            Karmichael&nbsp;Hunt</li>
+        <li class="player"><span class="num">24</span>
+
+            David&nbsp;Swallow</li>
+    </ul>
+
+    <ul class="team2 team-stk">
+        <li class="team-name"><h4>St Kilda</h4></li>
+        <li class="pos"><div class="flag"></div>Followers</li>
+        <li class="player"><span class="num">5</span>
+
+            Ben&nbsp;McEvoy</li>
+        <li class="player"><span class="num">20</span>
+
+            David&nbsp;Armitage</li>
+        <li class="player"><span class="num">3</span>
+
+            Jack&nbsp;Steven</li>
+    </ul>
+</div>
+
+<div class="posGroup">
+    <ul class="team1 team-gcfc">
+        <li class="pos"><div class="flag"></div><abbr title="Full Back">FB</abbr></li>
+        <li class="player"><span class="num">38</span>
+
+            Joel&nbsp;Wilkinson</li>
+        <li class="player"><span class="num">14</span>
+
+            Matthew&nbsp;Warnock</li>
+        <li class="player"><span class="num">29</span>
+
+            Thomas&nbsp;Murphy</li>
+    </ul>
+
+    <ul class="team2 team-stk">
+        <li class="pos"><div class="flag"></div><abbr title="Full Forward">FF</abbr></li>
+        <li class="player"><span class="num">44</span>
+
+            Stephen&nbsp;Milne</li>
+        <li class="player"><span class="num">37</span>
+
+            Beau&nbsp;Maister</li>
+        <li class="player"><span class="num">28</span>
+
+            Rhys&nbsp;Stanley</li>
+    </ul>
+</div>
+
+<div class="posGroup">
+    <ul class="team1 team-gcfc">
+        <li class="pos"><div class="flag"></div><abbr title="Half Back">HB</abbr></li>
+        <li class="player"><span class="num">10</span>
+
+            Dion&nbsp;Prestia</li>
+        <li class="player"><span class="num">16</span>
+
+            Rory&nbsp;Thompson</li>
+        <li class="player"><span class="num">36</span>
+
+            Greg&nbsp;Broughton</li>
+    </ul>
+
+    <ul class="team2 team-stk">
+        <li class="pos"><div class="flag"></div><abbr title="Half Forward">HF</abbr></li>
+        <li class="player"><span class="num">2</span>
+
+            Arryn&nbsp;Siposs</li>
+        <li class="player"><span class="num">12</span>
+
+            Nick&nbsp;Riewoldt</li>
+        <li class="player"><span class="num">32</span>
+
+            Terry&nbsp;Milera</li>
+    </ul>
+</div>
+
+<div class="posGroup">
+    <ul class="team1 team-gcfc">
+        <li class="pos"><div class="flag"></div><abbr title="Centre">C</abbr></li>
+        <li class="player"><span class="num">26</span>
+
+            Matthew&nbsp;Shaw</li>
+        <li class="player"><span class="num">9</span>
+
+            Gary&nbsp;Ablett</li>
+        <li class="player"><span class="num">5</span>
+
+            Jarrod&nbsp;Harbrow</li>
+    </ul>
+
+    <ul class="team2 team-stk">
+        <li class="pos"><div class="flag"></div><abbr title="Centre">C</abbr></li>
+        <li class="player"><span class="num">16</span>
+
+            Jack&nbsp;Newnes</li>
+        <li class="player"><span class="num">7</span>
+
+            Lenny&nbsp;Hayes</li>
+        <li class="player"><span class="num">26</span>
+
+            Nick&nbsp;Dal Santo</li>
+    </ul>
+</div>
+
+<div class="posGroup">
+    <ul class="team1 team-gcfc">
+        <li class="pos"><div class="flag"></div><abbr title="Half Forward">HF</abbr></li>
+        <li class="player"><span class="num">11</span>
+
+            Harley&nbsp;Bennell</li>
+        <li class="player"><span class="num">23</span>
+
+            Charlie&nbsp;Dixon</li>
+        <li class="player"><span class="num">32</span>
+
+            Brandon&nbsp;Matera</li>
+    </ul>
+
+    <ul class="team2 team-stk">
+        <li class="pos"><div class="flag"></div><abbr title="Half Back">HB</abbr></li>
+        <li class="player"><span class="num">14</span>
+
+            Jarryn&nbsp;Geary</li>
+        <li class="player"><span class="num">31</span>
+
+            Tom&nbsp;Simpkin</li>
+        <li class="player"><span class="num">19</span>
+
+            Sam&nbsp;Gilbert</li>
+    </ul>
+</div>
+
+<div class="posGroup">
+    <ul class="team1 team-gcfc">
+        <li class="pos"><div class="flag"></div><abbr title="Full Forward">FF</abbr></li>
+        <li class="player"><span class="num">8</span>
+
+            Luke&nbsp;Russell</li>
+        <li class="player"><span class="num">12</span>
+
+            Samuel&nbsp;Day</li>
+        <li class="player"><span class="num">17</span>
+
+            Steven&nbsp;May</li>
+    </ul>
+
+    <ul class="team2 team-stk">
+        <li class="pos"><div class="flag"></div><abbr title="Full Back">FB</abbr></li>
+        <li class="player"><span class="num">27</span>
+
+            Jason&nbsp;Blake</li>
+        <li class="player"><span class="num">33</span>
+
+            James&nbsp;Gwilt</li>
+        <li class="player"><span class="num">17</span>
+
+            Dylan&nbsp;Roberton</li>
+    </ul>
+</div>
+
+<div class="posGroup sidebars interchange">
+    <ul class="team1 team-gcfc">
+        <li class="pos"><div class="flag"></div>Interchange </li>
+        <li class="player"><span class="num">33</span>
+            Aaron&nbsp;Hall</li>
+        <li class="player"><span class="num">1</span>
+            Jaeger&nbsp;O&#039;Meara</li>
+        <li class="player"><span class="num">3</span>
+            Jared&nbsp;Brennan</li>
+        <li class="player"><span class="num">35</span>
+            Michael&nbsp;Rischitelli</li>
+        <li class="pos"><div class="flag"></div>Emergencies</li>
+        <li class="player"><span class="num">4</span>
+            Maverick&nbsp;Weller</li>
+        <li class="player"><span class="num">34</span>
+            Jack&nbsp;Hutchins</li>
+        <li class="player"><span class="num">42</span>
+            Kyal&nbsp;Horsley</li>
+    </ul>
+
+    <ul class="team2 team-stk">
+        <li class="pos"><div class="flag"></div>Interchange </li>
+        <li class="player"><span class="num">21</span>
+            Ahmed&nbsp;Saad</li>
+        <li class="player"><span class="num">1</span>
+            Tom&nbsp;Hickey</li>
+        <li class="player"><span class="num">4</span>
+            Clinton&nbsp;Jones</li>
+        <li class="player"><span class="num">22</span>
+            Farren&nbsp;Ray</li>
+        <li class="pos"><div class="flag"></div>Emergencies</li>
+        <li class="player"><span class="num">34</span>
+            Nathan&nbsp;Wright</li>
+        <li class="player"><span class="num">8</span>
+            Trent&nbsp;Dennis-Lane</li>
+        <li class="player"><span class="num">9</span>
+            Tom&nbsp;Lee</li>
+    </ul>
+</div>
+
+<div class="footer">
+    <div class="umpires">
+        <p class="pos">Umpires:</p>
+        <ul>
+            <li class="">C.Kamolins (19)</li>
+            <li class="">C.Donlon (1)</li>
+            <li class="last">A.Mitchell (31)</li>
+        </ul>
+    </div>
+    <div class="umpires">
+        <p class="pos">BOUNDARY:</p>
+        <ul>
+        </ul>
+    </div>
+    <div class="umpires">
+        <p class="pos">GOAL:</p>
+        <ul>
+        </ul>
+    </div>
+</div>
+
+</div><!-- /field-inouts -->
+</div>
+</div>
+<!-- END field view -->
+
+<!-- Begin text view -->
+<div id="tteamtext" class="hide-panel more-options">
+
+<div class="lineup">
+<div class="text-inouts team1 team-gcfc">
+    <h4>Gold Coast Suns</h4>
+    <div class="posGroup">
+        <p class="pos"><abbr title="Full Back">B</abbr></p>
+        <ul class="team-gcfc">
+            <li class="">
+                Joel&nbsp;Wilkinson,</li>
+            <li class="">
+                Matthew&nbsp;Warnock,</li>
+            <li class="last">
+                Thomas&nbsp;Murphy</li>
+        </ul>
+    </div>
+
+    <div class="posGroup">
+        <p class="pos"><abbr title="Half Back">HB</abbr></p>
+        <ul>
+            <li class="">
+                Dion&nbsp;Prestia,</li>
+            <li class="">
+                Rory&nbsp;Thompson,</li>
+            <li class="last">
+                Greg&nbsp;Broughton</li>
+        </ul>
+    </div>
+
+    <div class="posGroup">
+        <p class="pos"><abbr title="Centre">C</abbr></p>
+        <ul>
+            <li class="">
+                Matthew&nbsp;Shaw,</li>
+            <li class="">
+                Gary&nbsp;Ablett,</li>
+            <li class="last">
+                Jarrod&nbsp;Harbrow</li>
+        </ul>
+    </div>
+
+    <div class="posGroup">
+        <p class="pos"><abbr title="Half Forward">HF</abbr></p>
+        <ul>
+            <li class="">
+                Harley&nbsp;Bennell,</li>
+            <li class="">
+                Charlie&nbsp;Dixon,</li>
+            <li class="last">
+                Brandon&nbsp;Matera</li>
+        </ul>
+    </div>
+
+    <div class="posGroup">
+        <p class="pos"><abbr title="Full Forward">F</abbr></p>
+        <ul>
+            <li class="">
+                Luke&nbsp;Russell,</li>
+            <li class="">
+                Samuel&nbsp;Day,</li>
+            <li class="last">
+                Steven&nbsp;May</li>
+        </ul>
+    </div>
+
+    <div class="posGroup hr">
+        <p class="pos"><abbr title="Followers">Fol</abbr></p>
+        <ul class="team-gcfc last">
+            <li class="">
+                Zac&nbsp;Smith,</li>
+            <li class="">
+                Karmichael&nbsp;Hunt,</li>
+            <li class="last">
+                David&nbsp;Swallow</li>
+        </ul>
+    </div>
+    <div class="posGroup">
+        <p class="pos"><abbr title="Interchange">I/C</abbr></p>
+        <ul>
+            <li class="">
+                Aaron&nbsp;Hall,</li>
+            <li class="">
+                Jaeger&nbsp;O&#039;Meara,</li>
+            <li class="">
+                Jared&nbsp;Brennan,</li>
+            <li class="last">
+                Michael&nbsp;Rischitelli</li>
+        </ul>
+    </div>
+
+    <div class="posGroup hr">
+        <p class="pos"><abbr title="Substitute">Emg</abbr></p>
+        <ul class="team-gcfc last">
+            <li class="">
+                Maverick&nbsp;Weller,</li>
+            <li class="">
+                Jack&nbsp;Hutchins,</li>
+            <li class="last">
+                Kyal&nbsp;Horsley</li>
+        </ul>
+    </div>
+    <div class="posGroup last">
+        <div class="inouts">
+            <div class="changeup in">
+                <p class="boxy"><span>In</span></p>
+                <ul>
+                    <li class="last">
+                        No Change
+                    </li>
+                </ul>
+            </div>
+            <div class="changeup out">
+                <p class="boxy"><span>Out</span></p>
+                <ul>
+                    <li class="last">
+                        No Change
+                    </li>
+                </ul>
+            </div>
+            <div class="changeup new">
+                <p class="boxy"><span>New</span></p>
+                <ul>
+                    <li class="">
+                        Thomas&nbsp;
+                        Murphy,</li>
+                    <li class="">
+                        Greg&nbsp;
+                        Broughton,</li>
+                    <li class="last">
+                        Jaeger&nbsp;
+                        O&#039;Meara</li>
+                </ul>
+            </div>
+        </div><!-- /inouts -->
+    </div><!-- /team1 -->
+</div>
+
+<div class="text-inouts team1 team-stk">
+    <h4>St Kilda</h4>
+    <div class="posGroup">
+        <p class="pos"><abbr title="Full Back">B</abbr></p>
+        <ul class="team-stk">
+            <li class="">
+                Jason&nbsp;Blake,</li>
+            <li class="">
+                James&nbsp;Gwilt,</li>
+            <li class="last">
+                Dylan&nbsp;Roberton</li>
+        </ul>
+    </div>
+    <div class="posGroup">
+        <p class="pos"><abbr title="Half Back">HB</abbr></p>
+        <ul>
+            <li class="">
+                Jarryn&nbsp;Geary,</li>
+            <li class="">
+                Tom&nbsp;Simpkin,</li>
+            <li class="last">
+                Sam&nbsp;Gilbert</li>
+        </ul>
+    </div>
+
+    <div class="posGroup">
+        <p class="pos"><abbr title="Centre">C</abbr></p>
+        <ul>
+            <li class="">
+                Jack&nbsp;Newnes,</li>
+            <li class="">
+                Lenny&nbsp;Hayes,</li>
+            <li class="last">
+                Nick&nbsp;Dal Santo</li>
+        </ul>
+    </div>
+
+    <div class="posGroup">
+        <p class="pos"><abbr title="Half Forward">HF</abbr></p>
+        <ul>
+            <li class="">
+                Arryn&nbsp;Siposs,</li>
+            <li class="">
+                Nick&nbsp;Riewoldt,</li>
+            <li class="last">
+                Terry&nbsp;Milera</li>
+        </ul>
+    </div>
+
+    <div class="posGroup">
+        <p class="pos"><abbr title="Full Forward">F</abbr></p>
+        <ul>
+            <li class="">
+                Stephen&nbsp;Milne,</li>
+            <li class="">
+                Beau&nbsp;Maister,</li>
+            <li class="last">
+                Rhys&nbsp;Stanley</li>
+        </ul>
+    </div>
+
+    <div class="posGroup hr">
+        <p class="pos"><abbr title="Followers">Fol</abbr></p>
+        <ul class="team-stk last">
+            <li class="">
+                Ben&nbsp;McEvoy,</li>
+            <li class="">
+                David&nbsp;Armitage,</li>
+            <li class="last">
+                Jack&nbsp;Steven</li>
+        </ul>
+    </div>
+
+    <div class="posGroup">
+        <p class="pos"><abbr title="Interchange">I/C</abbr></p>
+        <ul>
+            <li class="">
+                Ahmed&nbsp;Saad,</li>
+            <li class="">
+                Tom&nbsp;Hickey,</li>
+            <li class="">
+                Clinton&nbsp;Jones,</li>
+            <li class="last">
+                Farren&nbsp;Ray</li>
+        </ul>
+    </div>
+
+    <div class="posGroup hr">
+        <p class="pos"><abbr title="Substitute">Emg</abbr></p>
+        <ul class="team-stk last">
+
+            <li class="">
+                Nathan&nbsp;Wright,</li>
+            <li class="">
+                Trent&nbsp;Dennis-Lane,</li>
+            <li class="last">
+                Tom&nbsp;Lee</li>
+        </ul>
+    </div>
+    <div class="posGroup last">
+        <div class="inouts">
+            <div class="changeup in">
+                <p class="boxy"><span>In</span></p>
+                <ul>
+                    <li class="last">
+                        No Change
+                    </li>
+                </ul>
+            </div>
+            <div class="changeup out">
+                <p class="boxy"><span>Out</span></p>
+                <ul>
+                    <li class="last">
+                        No Change
+                    </li>
+                </ul>
+            </div>
+            <div class="changeup new">
+                <p class="boxy"><span>New</span></p>
+                <ul>
+                    <li class="">
+                        Dylan&nbsp;Roberton,</li>
+                    <li class="last">
+                        Tom&nbsp;Hickey</li>
+                </ul>
+            </div>
+        </div><!-- /inouts -->
+    </div><!-- /team1 -->
+</div>
+</div><!-- /lineup -->
+
+<div id="fieldTools" class="game-tools">
+    <p class="pubdate">Last updated: 4:30pm Friday, March 29, 2013</p>
+</div>
+</div>
+<!-- END text view -->
+
+<!--BEGIN List View-->
+<div id="tteamlist" class="hide-panel more-options">
+<div class="list-inouts">
+<div class="team1 team-gcfc">
+    <ul>
+        <li class="team-name"><span><div class="flag"></div></span><h4>Gold Coast Suns</h4></li>
+
+        <li>
+            <span class="num">1</span>
+
+            Jaeger&nbsp;O&#039;Meara</li>
+        <li>
+            <span class="num">2</span>
+
+            Zac&nbsp;Smith</li>
+        <li>
+            <span class="num">3</span>
+
+            Jared&nbsp;Brennan</li>
+        <li>
+            <span class="num">4</span>
+
+            Maverick&nbsp;Weller</li>
+        <li>
+            <span class="num">5</span>
+
+            Jarrod&nbsp;Harbrow</li>
+        <li>
+            <span class="num">7</span>
+
+            Karmichael&nbsp;Hunt</li>
+        <li>
+            <span class="num">8</span>
+
+            Luke&nbsp;Russell</li>
+        <li>
+            <span class="num">9</span>
+
+            Gary&nbsp;Ablett</li>
+        <li>
+            <span class="num">10</span>
+
+            Dion&nbsp;Prestia</li>
+        <li>
+            <span class="num">11</span>
+
+            Harley&nbsp;Bennell</li>
+        <li>
+            <span class="num">12</span>
+
+            Samuel&nbsp;Day</li>
+        <li>
+            <span class="num">14</span>
+
+            Matthew&nbsp;Warnock</li>
+        <li>
+            <span class="num">16</span>
+
+            Rory&nbsp;Thompson</li>
+        <li>
+            <span class="num">17</span>
+
+            Steven&nbsp;May</li>
+        <li>
+            <span class="num">23</span>
+
+            Charlie&nbsp;Dixon</li>
+        <li>
+            <span class="num">24</span>
+
+            David&nbsp;Swallow</li>
+        <li>
+            <span class="num">26</span>
+
+            Matthew&nbsp;Shaw</li>
+        <li>
+            <span class="num">29</span>
+
+            Thomas&nbsp;Murphy</li>
+        <li>
+            <span class="num">32</span>
+
+            Brandon&nbsp;Matera</li>
+        <li>
+            <span class="num">33</span>
+
+            Aaron&nbsp;Hall</li>
+        <li>
+            <span class="num">34</span>
+
+            Jack&nbsp;Hutchins</li>
+        <li>
+            <span class="num">35</span>
+
+            Michael&nbsp;Rischitelli</li>
+        <li>
+            <span class="num">36</span>
+
+            Greg&nbsp;Broughton</li>
+        <li>
+            <span class="num">38</span>
+
+            Joel&nbsp;Wilkinson</li>
+        <li>
+            <span class="num">42</span>
+
+            Kyal&nbsp;Horsley</li>
+    </ul>
+</div><!-- /team1 -->
+
+<div class="team2 team-stk">
+    <ul>
+        <li class="team-name"><span><div class="flag"></div></span><h4>St Kilda</h4></li>
+        <li>
+            <span class="num">1</span>
+
+            Tom&nbsp;Hickey</li>
+        <li>
+            <span class="num">2</span>
+
+            Arryn&nbsp;Siposs</li>
+        <li>
+            <span class="num">3</span>
+
+            Jack&nbsp;Steven</li>
+        <li>
+            <span class="num">4</span>
+
+            Clinton&nbsp;Jones</li>
+        <li>
+            <span class="num">5</span>
+
+            Ben&nbsp;McEvoy</li>
+        <li>
+            <span class="num">7</span>
+
+            Lenny&nbsp;Hayes</li>
+        <li>
+            <span class="num">8</span>
+
+            Trent&nbsp;Dennis-Lane</li>
+        <li>
+            <span class="num">9</span>
+
+            Tom&nbsp;Lee</li>
+        <li>
+            <span class="num">12</span>
+
+            Nick&nbsp;Riewoldt</li>
+        <li>
+            <span class="num">14</span>
+
+            Jarryn&nbsp;Geary</li>
+        <li>
+            <span class="num">16</span>
+
+            Jack&nbsp;Newnes</li>
+        <li>
+            <span class="num">17</span>
+
+            Dylan&nbsp;Roberton</li>
+        <li>
+            <span class="num">19</span>
+
+            Sam&nbsp;Gilbert</li>
+        <li>
+            <span class="num">20</span>
+
+            David&nbsp;Armitage</li>
+        <li>
+            <span class="num">21</span>
+
+            Ahmed&nbsp;Saad</li>
+        <li>
+            <span class="num">22</span>
+
+            Farren&nbsp;Ray</li>
+        <li>
+            <span class="num">26</span>
+
+            Nick&nbsp;Dal Santo</li>
+        <li>
+            <span class="num">27</span>
+
+            Jason&nbsp;Blake</li>
+        <li>
+            <span class="num">28</span>
+
+            Rhys&nbsp;Stanley</li>
+        <li>
+            <span class="num">31</span>
+
+            Tom&nbsp;Simpkin</li>
+        <li>
+            <span class="num">32</span>
+
+            Terry&nbsp;Milera</li>
+        <li>
+            <span class="num">33</span>
+
+            James&nbsp;Gwilt</li>
+        <li>
+            <span class="num">34</span>
+
+            Nathan&nbsp;Wright</li>
+        <li>
+            <span class="num">37</span>
+
+            Beau&nbsp;Maister</li>
+        <li>
+            <span class="num">44</span>
+
+            Stephen&nbsp;Milne</li>
+    </ul>
+</div><!-- /team2 -->
+</div>
+</div>
+<!--END List View-->
+
+</div>
+</div>
+</div>
+</div>
+<div id="live-odds">
+    <h3 class="tab-noscript">Live Odds</h3>
+    <a target="_blank" href="http://media.sensis.com.au/adclick/CID=000445970000000000000000" class="click-tag"></a>
+    <iframe width="950px" height="344px" frameborder="0" src="http://www.tabinfo.com.au/NrlFlashPriceBox/aflworm.html?matchid=CD_M20130140106"></iframe>
+    <div class="tracker">
+    </div>
+</div>
+
+</div>
+
+<!-- END tabs -->
+</div>
+
+</div><script type="text/template" id="mc-clock-template">
+    <span><%= template.currentQtr() %></span> <% if (template.isRunning()) { %><%= template.currentTime() %><% } %>
+</script><script type="text/template" id="match-block-scheduled">
+    <div class="match-info">
+        <a href="<%= helper.matchLink() %>" class="match-details-link">
+            <div class="match-details"><div class="date"><%= helper.formatDate() %></div></div>
+            <div class="team-details"><%= info.getHomeTeam() %>
+                <div class="progress-info"><%= info.getVenue() %></div>
+            </div>
+            <div class="team-details"><%= info.getAwayTeam() %>
+                <div class="progress-info"></div>
+            </div>
+        </a>
+        <div class="match-status"><a href="<%= helper.ticketLink() %>">BUY TICKETS</a></div>
+    </div>
+</script>
+
+<script type="text/template" id="match-block-live">
+    <div class="match-info">
+        <a href="<%= helper.matchLink() %>" class="match-details-link">
+            <div class="match-details">
+                <div class="venue"><%= info.getVenue() %></div>
+                <div class="clock"><%= helper.periodName() %></div>
+            </div>
+            <div class="team-details"><%= info.getHomeTeam() %>
+                <div class="progress-info"><% if (info.hasHomeTeamScore()) { %><%= info.getHomeTeamScore().goals %>.<%= info.getHomeTeamScore().behinds %>.<%= info.getHomeTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="team-details"><%= info.getAwayTeam() %>
+                <div class="progress-info"><% if (info.hasAwayTeamScore()) { %><%= info.getAwayTeamScore().goals %>.<%= info.getAwayTeamScore().behinds %>.<%= info.getAwayTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="match-status">Live Now</div>
+        </a>
+    </div>
+</script>
+
+<script type="text/template" id="match-block-concluded">
+    <div class="match-info">
+        <a href="<%= helper.matchLink() %>" class="match-details-link">
+            <div class="match-details">
+                <div class="date"><%= helper.formatDate() %></div>
+            </div>
+            <div class="team-details<%= (info.isHomeWinner() ? ' winner' : '') %>"><%= info.getHomeTeam() %>
+                <div class="progress-info"><% if (info.hasHomeTeamScore()) { %><%= info.getHomeTeamScore().goals %>.<%= info.getHomeTeamScore().behinds %>.<%= info.getHomeTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="team-details<%= (info.isAwayWinner() ? ' winner' : '') %>"><%= info.getAwayTeam() %>
+                <div class="progress-info"><% if (info.hasAwayTeamScore()) { %><%= info.getAwayTeamScore().goals %>.<%= info.getAwayTeamScore().behinds %>.<%= info.getAwayTeamScore().totalScore %><% } %></div>
+            </div>
+        </a>
+        <div class="match-status">
+            <a href="<%= helper.replayLink() %>">Watch Replay</a>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="match-block-fulltime">
+    <div class="match-info">
+        <a href="<%= helper.matchLink() %>" class="match-details-link">
+            <div class="match-details"><div class="date"><%= helper.formatDate() %></div></div>
+            <div class="team-details<%= (info.isHomeWinner() ? ' winner' : '') %>"><%= info.getHomeTeam() %>
+                <div class="progress-info"><% if (info.hasHomeTeamScore()) { %><%= info.getHomeTeamScore().goals %>.<%= info.getHomeTeamScore().behinds %>.<%= info.getHomeTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="team-details<%= (info.isAwayWinner() ? ' winner' : '') %>"><%= info.getAwayTeam() %>
+                <div class="progress-info"><% if (info.hasAwayTeamScore()) { %><%= info.getAwayTeamScore().goals %>.<%= info.getAwayTeamScore().behinds %>.<%= info.getAwayTeamScore().totalScore %><% } %></div>
+            </div>
+            <div class="match-status">Full Time</div></a>
+    </div>
+</script>
+
+<script type="text/template" id="match-block-byes">
+    <div class="match-info">
+        <div class="match-details">Byes</div>
+        <div class="team-details">
+            <ul class="match-byes-list">
+                <% _.each(items, function(bye) { %>
+                <li><%= bye.getTeamName() %>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
+</script><script type="text/template" id="mc-event-template">
+    <td><a href="#" class="flag team-<%= object.teamAbbr().toLowerCase() %>"><%= object.teamAbbr() %></a><span class="goal"><%= object.type() %></span></td>
+    <td class="lowercase"><span class="name"><%= helper.name() %></span></td>
+    <td><%= object.quarter() %> <%= object.when() %></td>
+    <td><%= object.homeScore() %>-<%= object.awayScore() %></td>
+</script><script type="text/template" id="mc-score-template">
+    <li><span>Goals</span> <%= template.goals() %></li>
+    <li><span>Behinds</span> <%= template.behinds() %></li>
+    <li class="total"><span>Points</span> <%= template.total() %></li>
+</script><script type="text/template" id="comment-template">
+    <div class="commentary-timestamp"><%=qtr%> <%=time%></div>
+    <div class="commentary-comment"><p><strong><%=title%></strong> <%=comment%></p>
+</script><script type="text/template" id="mc-teamstats-template">
+    <li class="major">
+        <span class="number"><%= item.s('disposals') %></span>
+        <span class="bar"><span class="<%= view.biggest('disposals') %>" style="width: <%= view.percentage('disposals','disposals') %>%"></span></span>
+    </li>
+    <li>
+        <span class="number"><%= item.s('kicks') %></span>
+        <span class="bar"><span class="<%= view.biggest('kicks') %>" style="width: <%= view.percentage('disposals','kicks') %>%"></span></span>
+    </li>
+    <li>
+        <span class="number"><%= item.s('handballs') %></span>
+        <span class="bar"><span class="<%= view.biggest('handballs') %>" style="width: <%= view.percentage('disposals','handballs') %>%"></span></span>
+    </li>
+    <li class="major">
+        <span class="number"><%= item.s('freesFor') %></span>
+        <span class="bar"><span class="<%= view.biggest('freesFor') %>" style="width: <%= view.percentage('freesFor','freesFor') %>%"></span></span>
+    </li>
+    <li class="major">
+        <span class="number"><%= item.s('clearances.totalClearances') %></span>
+        <span class="bar"><span class="<%= view.biggest('clearances.totalClearances') %>" style="width: <%= view.percentage('clearances.totalClearances','clearances.totalClearances') %>%"></span></span>
+    </li>
+    <li>
+        <span class="number"><%= item.s('clearances.centreClearances') %></span>
+        <span class="bar"><span class="<%= view.biggest('clearances.centreClearances') %>" style="width: <%= view.percentage('clearances.totalClearances','clearances.centreClearances') %>%"></span></span>
+    </li>
+    <li>
+        <span class="number"><%= item.s('clearances.stoppageClearances') %></span>
+        <span class="bar"><span class="<%= view.biggest('clearances.stoppageClearances') %>" style="width: <%= view.percentage('clearances.totalClearances','clearances.stoppageClearances') %>%"></span></span>
+    </li>
+    <li class="major">
+        <span class="number"><%= item.s('inside50s') %></span>
+        <span class="bar"><span class="<%= view.biggest('inside50s') %>" style="width: <%= view.percentage('inside50s','inside50s') %>%"></span></span>
+    </li>
+    <li>
+        <span class="number"><%= item.s('marksInside50') %></span>
+        <span class="bar"><span class="<%= view.biggest('marksInside50') %>" style="width: <%= view.percentage('inside50s','marksInside50') %>%"></span></span>
+    </li>
+    <li class="major fix">
+        <span class="number"><%= item.s('contestedPossessions') %></span>
+        <span class="bar"><span class="<%= view.biggest('contestedPossessions') %>" style="width: <%= view.percentage('contestedPossessions','contestedPossessions') %>%"></span></span>
+    </li>
+    <li class="major">
+        <span class="number"><%= item.s('tackles') %></span>
+        <span class="bar"><span class="<%= view.biggest('tackles') %>" style="width: <%= view.percentage('tackles','tackles') %>%"></span></span>
+    </li>
+    <li class="major">
+        <span class="number"><%= item.s('hitouts') %></span>
+        <span class="bar"><span class="<%= view.biggest('hitouts') %>" style="width: <%= view.percentage('hitouts','hitouts') %>%"></span></span>
+    </li>
+</script><script type="text/template" id="mc-basic-template">
+    <td class="name">
+        <% if (item.i()) { %>
+        <span><%= item.i() %></span>
+        <% } %>
+
+        <span class="full-name"><%= item.name() %></span>
+    </td>
+    <td><%= item.s('kicks') %></td>
+    <td><%= item.s('handballs') %></td>
+    <td><%= item.s('disposals') %></td>
+    <td><%= item.s('marks') %></td>
+    <td><%= item.s('hitouts') %></td>
+    <td><%= item.s('freesFor') %></td>
+    <td><%= item.s('freesAgainst') %></td>
+    <td><%= item.s('tackles') %></td>
+    <td><%= item.s('goals') %></td>
+    <td><%= item.s('behinds') %></td>
+    <td><%= item.s('dreamTeamPoints') %></td>
+</script>
+<script type="text/template" id="mc-basic-header-template">
+    <tr>
+        <th class="sortable player" data-sort="playerName">
+            <span>Player</span>
+            <span class="direction <%= view.directionAbbr('playerName') %> <%= view.currentHeader('playerName') %>"></span>
+        </th>
+        <th class="sortable" data-sort="kicks">
+            <span>K</span>
+            <span class="direction <%= view.directionAbbr('kicks') %> <%= view.currentHeader('kicks') %>"></span>
+        </th>
+        <th class="sortable" data-sort="handballs">
+            <span>H</span>
+            <span class="direction <%= view.directionAbbr('handballs') %> <%= view.currentHeader('handballs') %>"></span>
+        </th>
+        <th class="sortable" data-sort="disposals">
+            <span>D</span>
+            <span class="direction <%= view.directionAbbr('disposals') %> <%= view.currentHeader('disposals') %>"></span>
+        </th>
+        <th class="sortable" data-sort="marks">
+            <span>M</span>
+            <span class="direction <%= view.directionAbbr('marks') %> <%= view.currentHeader('marks') %>"></span>
+        </th>
+        <th class="sortable" data-sort="hitouts">
+            <span>HO</span>
+            <span class="direction <%= view.directionAbbr('hitouts') %> <%= view.currentHeader('hitouts') %>"></span>
+        </th>
+        <th class="sortable" data-sort="freesFor">
+            <span>FF</span>
+            <span class="direction <%= view.directionAbbr('freesFor') %> <%= view.currentHeader('freesFor') %>"></span>
+        </th>
+        <th class="sortable" data-sort="freesAgainst">
+            <span>FA</span>
+            <span class="direction <%= view.directionAbbr('freesAgainst') %> <%= view.currentHeader('freesAgainst') %>"></span>
+        </th>
+        <th class="sortable" data-sort="tackles">
+            <span>T</span>
+            <span class="direction <%= view.directionAbbr('tackles') %> <%= view.currentHeader('tackles') %>"></span>
+        </th>
+        <th class="sortable" data-sort="goals">
+            <span>G</span>
+            <span class="direction <%= view.directionAbbr('goals') %> <%= view.currentHeader('goals') %>"></span>
+        </th>
+        <th class="sortable" data-sort="behinds">
+            <span>B</span>
+            <span class="direction <%= view.directionAbbr('behinds') %> <%= view.currentHeader('behinds') %>"></span>
+        </th>
+        <th class="sortable" data-sort="dreamTeamPoints">
+            <span>DT</span>
+            <span class="direction <%= view.directionAbbr('dreamTeamPoints') %> <%= view.currentHeader('dreamTeamPoints') %>"></span>
+        </th>
+    </tr>
+</script><script type="text/template" id="mc-advanced-template">
+    <td class="name">
+        <% if (item.i()) { %>
+        <span><%= item.i() %></span>
+        <% } %>
+
+        <span class="full-name"><%= item.name() %></span>
+    </td>
+    <td><%= item.jumper() %></td>
+    <td><%= item.s('kicks') %></td>
+    <td><%= item.s('handballs') %></td>
+    <td><%= item.s('disposals') %></td>
+    <td><%= item.s('contestedPossessions') %></td>
+    <td><%= item.s('uncontestedPossessions') %></td>
+    <td><%= item.s('disposalEfficiency') %></td>
+    <td><%= item.s('clangers') %></td>
+    <td><%= item.s('marks') %></td>
+    <td><%= item.s('contestedMarks') %></td>
+    <td><%= item.s('marksInside50') %></td>
+    <td><%= item.s('hitouts') %></td>
+    <td><%= item.s('clearances.totalClearances') %></td>
+    <td><%= item.s('clearances.centreClearances') %></td>
+    <td><%= item.s('clearances.stoppageClearances') %></td>
+    <td><%= item.s('rebound50s') %></td>
+    <td><%= item.s('freesFor') %></td>
+    <td><%= item.s('freesAgainst') %></td>
+    <td><%= item.s('tackles') %></td>
+    <td><%= item.s('onePercenters') %></td>
+    <td><%= item.s('bounces') %></td>
+    <td><%= item.s('inside50s') %></td>
+    <td><%= item.s('goals') %></td>
+    <td><%= item.s('behinds') %></td>
+    <td><%= item.s('goalAssists') %></td>
+    <td><%= item.s('goalAccuracy') %></td>
+    <td><%= item.g('timeOnGroundPercentage') %></td>
+    <td><%= item.s('dreamTeamPoints') %></td>
+</script>
+<script type="text/template" id="mc-advanced-header-template">
+    <tr>
+        <th class="sortable player" data-sort="playerName">
+            <span>Player</span>
+            <span class="direction <%= view.directionAbbr('playerName') %> <%= view.currentHeader('playerName') %>"></span>
+        </th>
+        <th class="sortable" data-sort="jumperNumber">
+            <span>No.</span>
+            <span class="direction <%= view.directionAbbr('jumperNumber') %> <%= view.currentHeader('jumperNumber') %>"></span>
+        </th>
+        <th class="sortable" data-sort="kicks">
+            <span>K</span>
+            <span class="direction <%= view.directionAbbr('kicks') %> <%= view.currentHeader('kicks') %>"></span>
+        </th>
+        <th class="sortable" data-sort="handballs">
+            <span>H</span>
+            <span class="direction <%= view.directionAbbr('handballs') %> <%= view.currentHeader('handballs') %>"></span>
+        </th>
+        <th class="sortable" data-sort="disposals">
+            <span>D</span>
+            <span class="direction <%= view.directionAbbr('disposals') %> <%= view.currentHeader('disposals') %>"></span>
+        </th>
+        <th class="sortable" data-sort="contestedPossessions">
+            <span>CP</span>
+            <span class="direction <%= view.directionAbbr('contestedPossessions') %> <%= view.currentHeader('contestedPossessions') %>"></span>
+        </th>
+        <th class="sortable" data-sort="uncontestedPossessions">
+            <span>UP</span>
+            <span class="direction <%= view.directionAbbr('uncontestedPossessions') %> <%= view.currentHeader('uncontestedPossessions') %>"></span>
+        </th>
+        <th class="sortable" data-sort="disposalEfficiency">
+            <span>DE%</span>
+            <span class="direction <%= view.directionAbbr('disposalEfficiency') %> <%= view.currentHeader('disposalEfficiency') %>"></span>
+        </th>
+        <th class="sortable" data-sort="clangers">
+            <span>CLG</span>
+            <span class="direction <%= view.directionAbbr('clangers') %> <%= view.currentHeader('clangers') %>"></span>
+        </th>
+        <th class="sortable" data-sort="marks">
+            <span>M</span>
+            <span class="direction <%= view.directionAbbr('marks') %> <%= view.currentHeader('marks') %>"></span>
+        </th>
+        <th class="sortable" data-sort="contestedMarks">
+            <span>CM</span>
+            <span class="direction <%= view.directionAbbr('contestedMarks') %> <%= view.currentHeader('contestedMarks') %>"></span>
+        </th>
+        <th class="sortable" data-sort="marksInside50">
+            <span>M50</span>
+            <span class="direction <%= view.directionAbbr('marksInside50') %> <%= view.currentHeader('marksInside50') %>"></span>
+        </th>
+        <th class="sortable" data-sort="hitouts">
+            <span>HO</span>
+            <span class="direction <%= view.directionAbbr('hitouts') %> <%= view.currentHeader('hitouts') %>"></span>
+        </th>
+        <th class="sortable" data-sort="totalClearances">
+            <span>CLR</span>
+            <span class="direction <%= view.directionAbbr('totalClearances') %> <%= view.currentHeader('totalClearances') %>"></span>
+        </th>
+        <th class="sortable" data-sort="centreClearances">
+            <span>CC</span>
+            <span class="direction <%= view.directionAbbr('centreClearances') %> <%= view.currentHeader('centreClearances') %>"></span>
+        </th>
+        <th class="sortable" data-sort="stoppageClearances">
+            <span>ST</span>
+            <span class="direction <%= view.directionAbbr('stoppageClearances') %> <%= view.currentHeader('stoppageClearances') %>"></span>
+        </th>
+        <th class="sortable" data-sort="rebound50s">
+            <span>R50</span>
+            <span class="direction <%= view.directionAbbr('rebound50s') %> <%= view.currentHeader('rebound50s') %>"></span>
+        </th>
+        <th class="sortable" data-sort="freesFor">
+            <span>FF</span>
+            <span class="direction <%= view.directionAbbr('freesFor') %> <%= view.currentHeader('freesFor') %>"></span>
+        </th>
+        <th class="sortable" data-sort="freesAgainst">
+            <span>FA</span>
+            <span class="direction <%= view.directionAbbr('freesAgainst') %> <%= view.currentHeader('freesAgainst') %>"></span>
+        </th>
+        <th class="sortable" data-sort="tackles">
+            <span>T</span>
+            <span class="direction <%= view.directionAbbr('tackles') %> <%= view.currentHeader('tackles') %>"></span>
+        </th>
+        <th class="sortable" data-sort="onePercenters">
+            <span>1%</span>
+            <span class="direction <%= view.directionAbbr('onePercenters') %> <%= view.currentHeader('onePercenters') %>"></span>
+        </th>
+        <th class="sortable" data-sort="bounces">
+            <span>Bo</span>
+            <span class="direction <%= view.directionAbbr('bounces') %> <%= view.currentHeader('bounces') %>"></span>
+        </th>
+        <th class="sortable" data-sort="inside50s">
+            <span>I50</span>
+            <span class="direction <%= view.directionAbbr('inside50s') %> <%= view.currentHeader('inside50s') %>"></span>
+        </th>
+        <th class="sortable" data-sort="goals">
+            <span>G</span>
+            <span class="direction <%= view.directionAbbr('goals') %> <%= view.currentHeader('goals') %>"></span>
+        </th>
+        <th class="sortable" data-sort="behinds">
+            <span>B</span>
+            <span class="direction <%= view.directionAbbr('behinds') %> <%= view.currentHeader('behinds') %>"></span>
+        </th>
+        <th class="sortable" data-sort="goalAssists">
+            <span>GA</span>
+            <span class="direction <%= view.directionAbbr('goalAssists') %> <%= view.currentHeader('goalAssists') %>"></span>
+        </th>
+        <th class="sortable" data-sort="goalAccuracy">
+            <span>G%</span>
+            <span class="direction <%= view.directionAbbr('goalAccuracy') %> <%= view.currentHeader('goalAccuracy') %>"></span>
+        </th>
+        <th class="sortable" data-sort="timeOnGroundPercentage">
+            <span>TG%</span>
+            <span class="direction <%= view.directionAbbr('timeOnGroundPercentage') %> <%= view.currentHeader('timeOnGroundPercentage') %>"></span>
+        </th>
+        <th class="sortable" data-sort="dreamTeamPoints">
+            <span>DT</span>
+            <span class="direction <%= view.directionAbbr('dreamTeamPoints') %> <%= view.currentHeader('dreamTeamPoints') %>"></span>
+        </th>
+    </tr>
+</script><!-- END body content wrapper -->
+
+<div class="footer-region">
+<div class="footer-container"><br><div class="footer wrapper"><!-- Start footer-news -->
+    <ul class="footer-news double-col column">
+        <li><br><a href="http://aflmembership.com.au/"><img src="/staticfile/images/membership-2011.jpg" width="50"></a>
+
+            <h4><a href="http://aflmembership.com.au/">AFL Membership</a></h4>
+
+            <p>AFL Membership brings you the<br>
+                TOTAL GAME</p>
+        </li>
+
+        <li><a href="http://aflcommunityclub.com.au/"><img alt="afl-community" src="/staticfile/images/afl-community-club-thm.jpg" width="50"></a>
+
+            <h4><a href="http://aflcommunityclub.com.au/">AFL Community Club website</a></h4>
+
+            <p>Everything on coaching, playing, umpiring, volunteering and managing your club</p>
+        </li>
+
+        <li><a href="http://aflcommunityclub.com.au/index.php?id=590"><img alt="Play AFL" src="/staticfile/images/playafl-2011.jpg" width="50"></a>
+
+            <h4><a href="http://aflcommunityclub.com.au/index.php?id=590">Play Like a Pro</a></h4>
+
+            <p>Find your local club and play like a pro</p>
+        </li>
+
+        <li><a href="http://aflauskick.com.au/"><img alt="Auskick" src="/staticfile/AFL%20Tenant/AFL/Static%20Files/Auskick60x60.png" width="50"></a>
+
+            <h4><a href="http://aflauskick.com.au/">NAB AFL Auskick</a></h4>
+
+            <p>Join the little big time. Auskick is fun, safe and a great way to introduce boys and girls to Australian football</p>
+        </li>
+    </ul>
+
+    <!-- End footer-news --><!-- Start footer-nav -->
+    <div class="footer-nav column last-col">
+        <ul class="column single-col ftr-one">
+            <li><span>AFL HQ</span>
+
+                <ul>
+                    <li><a target="_blank" href="https://service.telstra.com.au/general/bigpond-contact-us/form?productScope=AFL">Contact Us</a></li>
+
+                    <li><a href="/afl-hq/partners">Partners</a></li>
+
+                    <li><a href="/afl-hq/careers">Careers</a></li>
+
+                    <li><a href="/afl-hq/laws-of-the-game">Laws of the game</a></li>
+
+                    <li><a href="http://www.aflcommunityclub.com.au/index.php?id=485">Industry education</a></li>
+
+                    <li><a href="/afl-hq/licensing-queries">Licensing queries</a></li>
+
+                    <li><a href="/news/2011-01-31/afl-privacy-policy">Privacy policy</a></li>
+                </ul>
+            </li>
+
+            <li class="social"><span>Find us on</span>
+
+                <ul>
+                    <li class="facebook"><a href="http://www.facebook.com/afl">Facebook</a></li>
+
+                    <li class="twitter"><a href="http://www.twitter.com/afl">Twitter</a></li>
+
+                    <li class="googleplus"><a href="http://plus.google.com/113302990263167420341">Google +</a></li>
+
+                    <li class="youtube"><a href="http://www.youtube.com/afl">YouTube</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="column single-col ftr-two">
+            <li><span>Clubs</span>
+
+                <ul>
+                    <li><a href="http://afc.com.au/">Adelaide Crows</a></li>
+
+                    <li><a href="http://lions.com.au/">Brisbane Lions</a></li>
+
+                    <li><a href="http://carltonfc.com.au/">Carlton</a></li>
+
+                    <li><a href="http://collingwoodfc.com.au/">Collingwood</a></li>
+
+                    <li><a href="http://essendonfc.com.au/">Essendon</a></li>
+
+                    <li><a href="http://fremantlefc.com.au/">Fremantle</a></li>
+
+                    <li><a href="http://geelongcats.com.au/">Geelong Cats</a></li>
+
+                    <li><a href="http://goldcoastfc.com.au/">Gold Coast Suns</a></li>
+
+                    <li><a href="http://gwsgiants.com.au/">GWS Giants</a></li>
+
+                    <li><a href="http://hawthornfc.com.au/">Hawthorn</a></li>
+
+                    <li><a href="http://melbournefc.com.au/">Melbourne</a></li>
+
+                    <li><a href="http://kangaroos.com.au/">North Melbourne</a></li>
+
+                    <li><a href="http://portadelaidefc.com.au/">Port Adelaide</a></li>
+
+                    <li><a href="http://richmondfc.com.au/">Richmond</a></li>
+
+                    <li><a href="http://saints.com.au/">St Kilda</a></li>
+
+                    <li><a href="http://sydneyswans.com.au/">Sydney Swans</a></li>
+
+                    <li><a href="http://westcoasteagles.com.au/">West Coast Eagles</a></li>
+
+                    <li><a href="http://westernbulldogs.com.au/">Western Bulldogs</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="column single-col ftr-three">
+            <li><span>Play AFL</span>
+
+                <ul>
+                    <li><a href="http://aflauskick.com.au/">NAB AFL Auskick</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=3">Schools</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=32">Juniors</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=31">Youth</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=495">Women &amp; Girls</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=30">Open Age</a></li>
+
+                    <li><a href="http://afl9s.com.au/"> Cadbury AFL 9s</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=607">International</a></li>
+                </ul>
+            </li>
+
+            <li><span>Community Football </span>
+
+                <ul>
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=6">Coaching</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=4">Umpiring</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=7">Manage Your Club</a></li>
+
+                    <li><a href="http://www.aflcommunityclub.com.au/index.php?id=239">Volunteering</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=1">State Leagues</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="column single-col last-col">
+            <li><span>Community Programs </span>
+
+                <ul>
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=604">Indigenous Community</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=605">Multicultural Program</a></li>
+
+                    <li><a href="http://aflcommunityclub.com.au/index.php?id=603">Disability Inclusion</a></li>
+
+                    <li><a href="/">Respect &amp; Responsibility</a></li>
+                </ul>
+            </li>
+
+            <li><span>Talent programs</span>
+
+                <ul>
+                    <li><a href="/">NAB AFL Rising Stars Program</a></li>
+
+                    <li><a href="/">NAB Under 18s</a></li>
+
+                    <li><a href="/">NAB Under 16s</a></li>
+
+                    <li><a href="/">AIS-AFL Academy</a></li>
+                </ul>
+            </li>
+
+            <li><a target="_blank" href="http://www.aflcommunityclub.com.au/">Development</a>
+
+                <ul>
+                    <li><a target="_blank" href="http://www.aflcommunityclub.com.au/index.php?id=740">Development News</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- End footer-nav --></div><p style=" display: none;"><!--googleoff: index--></p>
+
+<div id="bphf-bottom"><footer id="bxb-footer" role="contentinfo"><section id="bxb-footer-promo" class="bxb-wrap" role="region"><span id="bxb-footer-promo-afl" data-promo-src="//go.bigpond.com/ideas/global_footer/afl/index.jsp">&#160;</span> <span id="bxb-footer-promo-nrl" data-promo-src="//go.bigpond.com/ideas/global_footer/nrl/index.jsp">&#160;</span> <iframe scrolling="no" frameborder="0" src="//go.bigpond.com/ideas/global_footer/afl/index.jsp" id="bxb-footer-promo-if" name="ifbxb-footer-promo-if" marginwidth="0" marginheight="0" class="bxb-footer-promo-on"></iframe> </section> <section id="bxb-section-footer-2" role="region"> <nav id="bxb-nav-footer" class="bxb-wrap" role="navigation">
+
+    <ul id="bxb-menu-footer" class="bxb-menu-l1" role="menu" aria-haspopup="false">
+        <li class="bxb-item-l1 bxb-first" role="menuitem"><a href="http://go.bigpond.com/help/?ref=Net-Footer-Corp-Help">Help</a></li>
+
+        <li class="bxb-item-l1" role="menuitem"><a href="http://go.bigpond.com/help/contact_us/?ref=Net-Footer-Corp-Contact">Contact Us</a></li>
+
+        <li class="bxb-item-l1" role="menuitem"><a href="https://bigpond.custhelp.com/app/answers/detail/a_id/5659/?ref=Net-Footer-Corp-SafeSurf">Safe Surfing</a></li>
+
+        <li class="bxb-item-l1" role="menuitem"><a href="http://telstra.com.au/internet/download/document/bigpond-isp-guidelines.pdf?ref=Net-Footer-Corp-Guidelines">Consumer Guidelines</a></li>
+
+        <li class="bxb-item-l1" role="menuitem"><a href="http://www.telstra.com.au/privacy/privacy-statement/?ref=Net-Footer-Corp-Privacy">Privacy</a></li>
+
+        <li class="bxb-item-l1" role="menuitem"><a href="http://go.bigpond.com/pond/terms-of-use/?ref=Net-Footer-Corp-Terms">Terms of Use</a></li>
+
+        <li class="bxb-item-l1" role="menuitem"><a href="http://www.telstra.com.au/terms-of-use/?ref=Net-Footer-Corp-CopyTM#IntellectualProperty">Copyright &#38; Trade mark</a></li>
+
+        <li class="bxb-item-l1" role="menuitem"><a href="http://www.telstraadvertisingnetwork.com.au/?ref=Net-Footer-Corp-Advertise">Advertise with us</a></li>
+
+        <li class="bxb-item-l1 bxb-last" role="menuitem"><a href="http://go.bigpond.com/sitemap?ref=Net-Footer-Corp-Sitemap">Sitemap</a></li>
+    </ul>
+
+    <div id="bxb-logo-bottom"><a class="bxb-logo-telstra" href="//www.telstra.com.au/?ref=Net-Footer-Tlogo">Telstra</a><a class="bxb-logo-bigpond" href="//go.bigpond.com/home/index.jsp?ref=Net-Footer-Bplogo">BigPond</a></div>
+
+</nav></section></footer></div>
+
+<p style=" display: none;"><!--googleon: index--></p>
+
+<div id="bphf-stat"><script type="text/javascript" src="/bphf/res/js/bxb.src.1.4.js"></script><noscript><div><img src="//secure-au.imrworldwide.com/cgi-bin/m?ci=bigpond&amp;cg=0&amp;cc=1&amp;ts=noscript" width="1" height="1" alt=""></div></noscript><script type="text/javascript" src="/bphf/res/js/s_code.js"></script><!-- bphfOVIS --></div></div><script type="text/javascript">
+    MediaSmart.newAd({
+        id:"4X1_1",
+        width:4,
+                     height:1,
+                     position:1
+           });
+</script><script type="text/javascript">
+           MediaSmart.newAd({
+                     id:"1X1_1",
+                     width: 1,
+                     height: 1,
+                     position: 1,
+                     iframeWidth: 0,
+                     iframeHeight: 0
+           });
+</script><!--TIME ELAPSED (Global Footer Region): 1--></div><!-- Omniture code include -->
+	<script type="text/javascript" src="/staticfile/analytics/afl_global.js"></script>
+	<script type="text/javascript">
+		onpagedata = typeof onpagedata == 'object' ? onpagedata: '';
+		reportingBeacon(onpagedata);
+	</script>
+
+	<!-- Google Analytics includes -->
+	<script type="text/javascript" src="/staticfile/analytics/afl_ga.js"></script>
+
+</body>
+</html>
+
+
+<!--2051--><!-- VIGN HPD cache address: df612d4850cb8ad986558ece91a61157; generated: Sat Mar 30 10:17:19 EST 2013 -->
