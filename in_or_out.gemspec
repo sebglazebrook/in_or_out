@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = InOrOut::VERSION
   spec.authors       = ["Sebastian Glazebrook"]
   spec.email         = ["sebastian.glazebrook@rea-group.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{This gem will help you check whether you AFL fantasy football players are playing this week or not}
+  spec.summary       = %q{This gem will help you check whether you AFL fantasy football players are playing this week or not}
   spec.homepage      = ""
   spec.license       = "MIT"
 
