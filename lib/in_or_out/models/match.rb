@@ -1,54 +1,44 @@
 require 'nokogiri'
 require 'active_support/inflector'
+require 'afl_schedule'
 
 module InOrOut
   class Match
 
-    attr_reader :status
+    attr_reader :status, :players
 
-    def initialize(data)
-      @data = Nokogiri::HTML(data)
-      @players = extract_players
+    def initialize(home_team, round, away_team = nil)
+      @home_team, @away_team, @round = home_team, away_team, round
+      @players = InOrOut::PlayerExtractor.new(download_match_data).extract
       @players.empty? ? @status = 'pending' : @status = 'ready'
     end
 
-    def playing_status(player_name, team_name)
-      player = @players.detect { |player| player.name == player_name && player.team == team_name }
-      if player
-        player.playing_status
+    def find_player(player_name, team_name)
+      @players.detect { |player| player.name == player_name && player.team == team_name }
+    end
+
+    def self.find(**options)
+      match = AFL::Schedule.new.next_match(team: options[:team])
+      if match
+        self.new(match[:home_team], match[:round], match[:away_team])
       else
-        @status == 'ready' ? 'Off' : 'Unknown'
+        match
       end
     end
 
     private
 
-    def extract_players
-      @players = @data.css('.player').map do |player|
-        build_player(
-            player.inner_text.split.last,
-            extract_team(player),
-            '',
-            extract_position(player),
-            player.inner_text.split.first
-        )
-      end
+    def download_match_data
+      Nokogiri::HTML(InOrOut::Scraper.new.scrape(match_url))
     end
 
-    def build_player(name, team, status, position, number )
-      InOrOut::Player.new(name, team, status: status, position: position, number: number)
+    def match_url
+      next_match = AFL::Schedule.new.next_match(@home_team) unless @away_team
+      "#{InOrOut.config[:afl_match_data_url]}/#{Time.now.year}/#{@round}/#{opponents_short_code(@home_team, @away_team)}"
     end
 
-    def extract_team(player_html_doc)
-      ""
-    end
-
-    def extract_number(player_html_doc)
-
-    end
-
-    def extract_position(player_html_doc)
-      player_html_doc.ancestors('div').first.attr('class').split.last.singularize
+    def opponents_short_code(home_team, away_team)
+      "#{InOrOut::Team.new(home_team).short_code}-v-#{InOrOut::Team.new(away_team).short_code}"
     end
 
   end
