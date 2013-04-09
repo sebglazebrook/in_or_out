@@ -34,14 +34,14 @@ describe InOrOut::Match do
     let(:subject) { InOrOut::Match.find(team: team_name)}
 
     it 'returns the next match for the given team name' do
-      AFL::Schedule.any_instance.should_receive(:next_match).with(team: '').and_return(afl_schedule_response)
+      AFL::Schedule.any_instance.should_receive(:next_match).with('').and_return(afl_schedule_response)
       subject.class.should == InOrOut::Match
     end
 
     let(:team_name) { '' }
 
     it 'returns "nil" if no match was found' do
-      AFL::Schedule.any_instance.should_receive(:next_match).with(team: '').and_return(nil)
+      AFL::Schedule.any_instance.should_receive(:next_match).with('').and_return(nil)
       subject.should == nil
     end
 

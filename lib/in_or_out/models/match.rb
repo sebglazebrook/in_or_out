@@ -18,7 +18,7 @@ module InOrOut
     end
 
     def self.find(**options)
-      match = AFL::Schedule.new.next_match(team: options[:team])
+      match = AFL::Schedule.new.next_match(options[:team])
       if match
         self.new(match[:home_team], match[:round], match[:away_team])
       else
