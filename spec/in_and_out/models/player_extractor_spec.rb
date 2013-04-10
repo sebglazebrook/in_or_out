@@ -29,6 +29,76 @@ describe InOrOut::PlayerExtractor do
       end
     end
 
+    describe 'position' do
+
+      let(:subject) { InOrOut::PlayerExtractor.new(match_data).extract }
+
+      describe 'Followers' do
+
+        it 'can be found' do
+          subject.detect { |player| player.position  == 'Follower'}.should_not == nil
+        end
+
+      end
+
+      describe 'Full Backs' do
+
+        it 'can be found' do
+          subject.detect { |player| player.position  == 'Full Back'}.should_not == nil
+        end
+
+      end
+
+      describe 'Full Forwards' do
+
+        it 'can be found' do
+          subject.detect { |player| player.position  == 'Full Forward'}.should_not == nil
+        end
+
+      end
+
+      describe 'Half Forwards' do
+
+        it 'can be found' do
+          subject.detect { |player| player.position  == 'Half Forward'}.should_not == nil
+        end
+
+      end
+
+      describe 'Half backs' do
+
+        it 'can be found' do
+          subject.detect { |player| player.position  == 'Half Back'}.should_not == nil
+        end
+
+      end
+
+      describe 'Centre' do
+
+        it 'can be found' do
+          subject.detect { |player| player.position  == 'Centre'}.should_not == nil
+        end
+
+      end
+
+      describe 'Interchange' do
+
+        it 'can be found' do
+          subject.detect { |player| player.position  == 'Interchange'}.should_not == nil
+        end
+
+      end
+
+      describe 'Emergencies' do
+
+        it 'can be found' do
+          subject.detect { |player| puts player.position; player.position  == 'Emergency'}.should_not == nil
+        end
+
+      end
+
+    end
+
   end
 
 end

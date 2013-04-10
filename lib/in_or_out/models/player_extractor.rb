@@ -35,7 +35,26 @@ module InOrOut
     end
 
     def extract_position(player_html_doc)
-      player_html_doc.ancestors('div').first.attr('class').split.last.singularize.capitalize
+      res = player_html_doc.ancestors('div').first.attr('class').split.last.singularize.capitalize
+      if res == 'Posgroup'
+        res = convert_position_shorthand(player_html_doc.ancestors('ul').css('.pos').first.inner_text.strip)
+      end
+      res
+    end
+
+    def convert_position_shorthand(position)
+      case position
+        when 'HB'
+          'Half Back'
+        when 'HF'
+          'Half Forward'
+        when 'FF'
+          'Full Forward'
+        when 'FB'
+          'Full Back'
+        when 'C'
+          'Centre'
+      end
     end
 
   end
