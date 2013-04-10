@@ -4,9 +4,5 @@ module InOrOut
     def initialize(team_name)
 
     end
-
-    def short_code
-
-    end
   end
 end

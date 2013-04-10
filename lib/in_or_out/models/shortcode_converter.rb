@@ -8,6 +8,10 @@ module InOrOut
         shortcodes[shortcode]
       end
 
+      def self.find_shortcode(team_name)
+        shortcodes.key(team_name)
+      end
+
       private
 
       def self.shortcodes

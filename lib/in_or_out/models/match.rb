@@ -38,7 +38,7 @@ module InOrOut
     end
 
     def opponents_short_code(home_team, away_team)
-      "#{InOrOut::Team.new(home_team).short_code}-v-#{InOrOut::Team.new(away_team).short_code}"
+      "#{InOrOut::ShortcodeConverter.find_shortcode(home_team)}-v-#{InOrOut::ShortcodeConverter.find_shortcode(away_team)}"
     end
 
   end

@@ -12,4 +12,8 @@ describe InOrOut::ShortcodeConverter do
     end
   end
 
+  it 'returns a shortcode when a full name is given' do
+    subject.find_shortcode('Essendon').should == 'ess'
+  end
+
 end
