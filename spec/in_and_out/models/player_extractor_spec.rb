@@ -92,7 +92,7 @@ describe InOrOut::PlayerExtractor do
       describe 'Emergencies' do
 
         it 'can be found' do
-          subject.detect { |player| puts player.position; player.position  == 'Emergency'}.should_not == nil
+          subject.detect { |player| player.position  == 'Emergency'}.should_not == nil
         end
 
       end

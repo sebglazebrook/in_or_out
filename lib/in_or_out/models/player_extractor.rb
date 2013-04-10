@@ -39,6 +39,7 @@ module InOrOut
       if res == 'Posgroup'
         res = convert_position_shorthand(player_html_doc.ancestors('ul').css('.pos').first.inner_text.strip)
       end
+      res = check_if_emergency(player_html_doc) if res == 'Interchange'
       res
     end
 
@@ -55,6 +56,24 @@ module InOrOut
         when 'C'
           'Centre'
       end
+    end
+
+    def check_if_emergency(player_html_doc)
+      positions = player_html_doc.ancestors('ul').first.css('.pos').size
+      if positions > 1
+        res = nil
+        while res == nil
+          previous = player_html_doc.previous_element
+          if previous.attr('class') == 'pos'
+            res = previous.inner_text.singularize.strip
+          else
+            player_html_doc = previous
+          end
+        end
+      else
+        res = 'Interchange'
+      end
+      res
     end
 
   end
