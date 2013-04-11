@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'in_or_out/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "in_or_out"
+  spec.name          = 'in_or_out'
   spec.version       = InOrOut::VERSION
-  spec.authors       = ["Sebastian Glazebrook"]
+  spec.authors       = ['Sebastian Glazebrook']
   spec.email         = ['me@sebglazebrook.com']
   spec.description   = %q{This gem will help you check whether you AFL fantasy football players are playing this week or not}
-  spec.summary       = %q{This gem will help you check whether you AFL fantasy football players are playing this week or not}
+  spec.summary       = %q{Hopefully this can help you with your AFL fantasy football. It's an easy gem. Let me know if you find any issues.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
