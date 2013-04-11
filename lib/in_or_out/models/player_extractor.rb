@@ -6,17 +6,29 @@ module InOrOut
     end
 
     def extract
-      @data.css('.player').map do |player|
-        build_player(
-            extract_name(player),
-            extract_team(player),
-            extract_position(player),
-            extract_number(player)
-        )
+      if ready?
+        @data.css('.player').map do |player|
+          build_player(
+              extract_name(player),
+              extract_team(player),
+              extract_position(player),
+              extract_number(player)
+          )
+        end
+      else
+        []
       end
     end
 
     private
+
+    def ready?
+      if @data.inner_text.match('Team Lineups')
+        true
+      else
+        false
+      end
+    end
 
     def build_player(name, team, position, number )
       InOrOut::Player.new(name, team, position: position, number: number)

@@ -3,6 +3,32 @@ require 'nokogiri'
 
 describe InOrOut::PlayerExtractor do
 
+  describe 'match readyness' do
+
+    let(:subject) { InOrOut::PlayerExtractor.new(match_data).send(:ready?) }
+
+    context 'match data not complete' do
+
+      let(:match_data) { Nokogiri::HTML("<html></html>") }
+
+      it "match as 'not ready'" do
+        subject.should == false
+      end
+
+    end
+
+    context 'match data complete' do
+
+      let(:match_data) { Nokogiri::HTML(File.open("#{InOrOut.root}/spec/data/finialised_teams.html").read) }
+
+      it "match is 'ready'" do
+        subject.should == true
+      end
+
+    end
+
+  end
+
 
   let(:match_data) { Nokogiri::HTML(File.open("#{InOrOut.root}/spec/data/finialised_teams.html").read) }
   let(:subject) { InOrOut::PlayerExtractor.new(match_data).extract }
@@ -12,6 +38,11 @@ describe InOrOut::PlayerExtractor do
     it 'takes match data and returns a collection of players' do
       subject.size.should == 50
       subject.first.class.should == InOrOut::Player
+    end
+
+    it 'only extracts data if match is ready' do
+      InOrOut::PlayerExtractor.any_instance.should_receive(:ready?).and_return(false)
+      subject.empty?.should == true
     end
 
   end

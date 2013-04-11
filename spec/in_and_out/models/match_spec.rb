@@ -31,10 +31,12 @@ describe InOrOut::Match do
                                                  venue: 'MCG',
                                                  time: Time.new(2013, 04, 6, 19, 40, 0, '+10:00'),
                                                  round: 2) }
+    let(:player_extractor_response) { [] }
     let(:subject) { InOrOut::Match.find(team: team_name)}
 
     it 'returns the next match for the given team name' do
       AFL::Schedule.any_instance.should_receive(:next_match).with('').and_return(afl_schedule_response)
+      #InOrOut::PlayerExtractor.any_instance.should_receive(:extract).and_return(player_extractor_response)
       subject.class.should == InOrOut::Match
     end
 
