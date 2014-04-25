@@ -1,3 +1,7 @@
+# Note
+
+This gem has not been updated for the 2014 season. Feel free to send a pull request :-)
+
 # InOrOut
 
 The aim of this gem is to help automate the process of finding out whether your favorite AFL players are playing on this week.
